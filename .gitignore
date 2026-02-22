@@ -10,8 +10,14 @@
 !.yarn/releases
 !.yarn/versions
 
+# agents skills (external)
+.agents/
+
 # testing
 /coverage
+/playwright-report/
+/test-results/
+/playwright/.cache/
 
 # next.js
 /.next/
