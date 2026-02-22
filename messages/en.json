@@ -1,0 +1,193 @@
+{
+  "nav": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "testimonials": "Testimonials",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "New: Version 2.0 available",
+    "title": "Transform the way you work",
+    "subtitle": "The all-in-one platform your team needs to collaborate, manage projects, and achieve goals faster.",
+    "ctaPrimary": "Start free",
+    "ctaSecondary": "Watch demo",
+    "stats": {
+      "activeUsers": "100k+",
+      "companies": "5k+",
+      "rating": "4.9/5"
+    },
+    "features": {
+      "realTime": "Real-time Collaboration",
+      "secure": "Enterprise Security",
+      "fast": "Lightning Fast"
+    }
+  },
+  "features": {
+    "title": "Everything you need",
+    "subtitle": "Powerful tools designed for modern teams"
+  },
+  "pricing": {
+    "title": "Simple and transparent pricing",
+    "subtitle": "Choose the plan that best fits your needs",
+    "cta": "Get started",
+    "plans": {
+      "starter": {
+        "name": "Starter",
+        "price": "$0",
+        "description": "Perfect for individuals and small projects.",
+        "features": [
+          "Up to 3 projects",
+          "Basic collaboration",
+          "Email support"
+        ]
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "$12",
+        "period": "/mo",
+        "description": "For teams that need more power and controls.",
+        "features": [
+          "Unlimited projects",
+          "Permission controls",
+          "Advanced integrations",
+          "Priority support"
+        ],
+        "popular": "Popular"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "Contact us",
+        "description": "Custom solutions for large organizations.",
+        "features": [
+          "Dedicated onboarding & support",
+          "Enterprise SLA",
+          "Custom integrations"
+        ]
+      }
+    }
+  },
+  "testimonials": {
+    "title": "What our customers say",
+    "subtitle": "Thousands of teams trust us",
+    "items": [
+      {
+        "quote": "This platform transformed how we work. Our productivity increased in weeks.",
+        "author": "Sarah Johnson",
+        "role": "Product Director",
+        "company": "Tech Solutions",
+        "avatar": ""
+      },
+      {
+        "quote": "Excellent support and features we actually use every day.",
+        "author": "Michael Chen",
+        "role": "CTO",
+        "company": "Innovatech",
+        "avatar": ""
+      },
+      {
+        "quote": "Easy to use with integrations that allowed us to scale quickly.",
+        "author": "Emma Davis",
+        "role": "Operations Manager",
+        "company": "Startup Co.",
+        "avatar": ""
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to get started?",
+    "subtitle": "Join thousands of teams that have already transformed the way they work",
+    "button": "Create free account",
+    "features": {
+      "growth": "Productivity Growth",
+      "speed": "Performance Speed",
+      "users": "Active Users",
+      "scale": "Scalability"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We're here to help. Send us a message and we'll get back to you as soon as possible.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Send message",
+    "success": "Message sent! We'll contact you soon.",
+    "info": {
+      "email": "hello@yourcompany.com",
+      "phone": "+1 (555) 123-4567",
+      "address": "123 Main Street, City, Country"
+    }
+  },
+  "footer": {
+    "description": "The all-in-one platform for modern teams.",
+    "links": {
+      "product": "Product",
+      "company": "Company",
+      "resources": "Resources",
+      "legal": "Legal"
+    },
+    "copyright": "© 2026 Your Company. All rights reserved."
+  },
+  "about": {
+    "title": "About Our Journey",
+    "subtitle": "We're on a mission to transform the way teams work together",
+    "mission": {
+      "title": "Our Mission",
+      "description": "We believe that great teamwork should be simple, intuitive, and accessible to everyone. Since 2016, we've been building tools that help teams connect, collaborate, and achieve their goals faster than ever before."
+    },
+    "values": {
+      "innovation": "Innovation",
+      "collaboration": "Collaboration",
+      "excellence": "Excellence",
+      "customer": "Customer First"
+    },
+    "stats": {
+      "team": "Our Team",
+      "years": "Years Experience",
+      "customers": "Happy Customers",
+      "countries": "Countries Served"
+    },
+    "team": [
+      {
+        "name": "Sarah Johnson",
+        "role": "CEO & Co-Founder"
+      },
+      {
+        "name": "Michael Chen",
+        "role": "CTO & Co-Founder"
+      },
+      {
+        "name": "Emma Davis",
+        "role": "Head of Design"
+      },
+      {
+        "name": "James Wilson",
+        "role": "VP of Sales"
+      }
+    ]
+  },
+  "Auth": {
+    "login": {
+      "title": "Access your account",
+      "description": "Enter your credentials to continue",
+      "email": "Email address",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "forgotPassword": "Forgot your password?",
+      "login": "Sign In",
+      "signup": "Create account",
+      "haveAccount": "Already have an account?",
+      "dontHaveAccount": "Don't have an account?"
+    },
+    "signup": {
+      "title": "Create new account",
+      "description": "Sign up to start using our platform",
+      "email": "Email address",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "signup": "Create account",
+      "haveAccount": "Already have an account?",
+      "login": "Sign In"
+    }
+  }
+}

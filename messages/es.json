@@ -1,0 +1,181 @@
+{
+  "nav": {
+    "features": "Características",
+    "pricing": "Precios",
+    "testimonials": "Testimonios",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "badge": "Nuevo: Versión 2.0 disponible",
+    "title": "Transforma tu forma de trabajar",
+    "subtitle": "La plataforma todo-en-uno que tu equipo necesita para colaborar, gestionar proyectos y alcanzar objetivos más rápido.",
+    "ctaPrimary": "Comenzar gratis",
+    "ctaSecondary": "Ver demo",
+    "stats": {
+      "activeUsers": "100k+",
+      "companies": "5k+",
+      "rating": "4.9/5"
+    },
+    "features": {
+      "realTime": "Colaboración en tiempo real",
+      "secure": "Seguridad empresarial",
+      "fast": "Velocidad rápida"
+    }
+  },
+  "features": {
+    "title": "Todo lo que necesitas",
+    "subtitle": "Herramientas potentes diseñadas para equipos modernos"
+  },
+  "pricing": {
+    "title": "Precios simples y transparentes",
+    "subtitle": "Elige el plan que mejor se adapte a tus necesidades",
+    "cta": "Comenzar ahora",
+    "plans": {
+      "starter": {
+        "name": "Starter",
+        "price": "$0",
+        "description": "Ideal para individuos y proyectos pequeños.",
+        "features": [
+          "Hasta 3 proyectos",
+          "Colaboración básica",
+          "Soporte por correo"
+        ]
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "$12",
+        "period": "/mes",
+        "description": "Para equipos que necesitan más potencia y controles.",
+        "features": [
+          "Proyectos ilimitados",
+          "Control de permisos",
+          "Integraciones avanzadas",
+          "Soporte prioritario"
+        ],
+        "popular": "Popular"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "Contáctanos",
+        "description": "Soluciones a medida para organizaciones grandes.",
+        "features": [
+          "Onboarding y soporte dedicado",
+          "SLA empresarial",
+          "Integraciones personalizadas"
+        ]
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Lo que dicen nuestros clientes",
+    "subtitle": "Miles de equipos confían en nosotros",
+    "items": [
+      {
+        "quote": "Esta plataforma transformó nuestra forma de trabajar. Hemos aumentado la productividad en semanas.",
+        "author": "Ana García",
+        "role": "Directora de Producto",
+        "company": "Tech Solutions",
+        "avatar": ""
+      },
+      {
+        "quote": "Soporte excelente y características que realmente usamos a diario.",
+        "author": "Luis Martín",
+        "role": "CTO",
+        "company": "Innovatech",
+        "avatar": ""
+      },
+      {
+        "quote": "Fácil de usar y con integraciones que nos permitieron escalar rápido.",
+        "author": "María López",
+        "role": "Gerente de Operaciones",
+        "company": "Startup Co.",
+        "avatar": ""
+      }
+    ]
+  },
+  "cta": {
+    "title": "¿Listo para empezar?",
+    "subtitle": "Únete a miles de equipos que ya transformaron su forma de trabajar",
+    "button": "Crear cuenta gratis",
+    "features": {
+      "growth": "Crecimiento de productividad",
+      "speed": "Velocidad de rendimiento",
+      "users": "Usuarios activos",
+      "scale": "Escalabilidad"
+    }
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "subtitle": "Estamos aquí para ayudarte. Envíanos un mensaje y te responderemos lo antes posible.",
+    "name": "Nombre",
+    "email": "Email",
+    "message": "Mensaje",
+    "submit": "Enviar mensaje",
+    "success": "¡Mensaje enviado! Te contactaremos pronto.",
+    "info": {
+      "email": "hola@tuempresa.com",
+      "phone": "+1 (555) 123-4567",
+      "address": "123 Calle Principal, Ciudad, País"
+    }
+  },
+  "footer": {
+    "description": "La plataforma todo-en-uno para equipos modernos.",
+    "links": {
+      "product": "Producto",
+      "company": "Empresa",
+      "resources": "Recursos",
+      "legal": "Legal"
+    },
+    "copyright": "© 2026 Tu Empresa. Todos los derechos reservados."
+  },
+  "about": {
+    "title": "Sobre Nuestro Camino",
+    "subtitle": "Estamos en misión de transformar la forma en que los equipos trabajan juntos",
+    "mission": {
+      "title": "Nuestra Misión",
+      "description": "Creemos que un gran trabajo en equipo debería ser simple, intuitivo y accesible para todos. Desde 2016, hemos estado construyendo herramientas que ayudan a los equipos a conectarse, colaborar y lograr sus objetivos más rápido que nunca antes."
+    },
+    "values": {
+      "innovation": "Innovación",
+      "collaboration": "Colaboración",
+      "excellence": "Excelencia",
+      "customer": "Cliente Primero"
+    },
+    "stats": {
+      "team": "Nuestro Equipo",
+      "years": "Años de Experiencia",
+      "customers": "Clientes Felices",
+      "countries": "Países Atendidos"
+    },
+    "team": [
+      { "name": "Sarah Johnson", "role": "CEO & Co-Fundadora" },
+      { "name": "Michael Chen", "role": "CTO & Co-Fundador" },
+      { "name": "Emma Davis", "role": "Jefe de Diseño" },
+      { "name": "James Wilson", "role": "VP de Ventas" }
+    ]
+  },
+  "Auth": {
+    "login": {
+      "title": "Acceso a tu cuenta",
+      "description": "Ingresa con tus credenciales para continuar",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "confirmPassword": "Confirmar contraseña",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "login": "Iniciar sesión",
+      "signup": "Crear cuenta",
+      "haveAccount": "¿Ya tienes cuenta?",
+      "dontHaveAccount": "¿No tienes cuenta?"
+    },
+    "signup": {
+      "title": "Crear nueva cuenta",
+      "description": "Regístrate para comenzar a usar nuestra plataforma",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "confirmPassword": "Confirmar contraseña",
+      "signup": "Crear cuenta",
+      "haveAccount": "¿Ya tienes cuenta?",
+      "login": "Iniciar sesión"
+    }
+  }
+}
