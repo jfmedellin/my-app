@@ -11,6 +11,7 @@ import {
     TableProperties,
     Layers,
     CheckSquare,
+    LogIn,
 } from "lucide-react";
 
 export function Sidebar({ locale }: { locale: string }) {
@@ -21,6 +22,11 @@ export function Sidebar({ locale }: { locale: string }) {
             name: "Dashboard",
             href: `/${locale}`,
             icon: LayoutDashboard,
+        },
+        {
+            name: "Sistema de Login",
+            href: `/${locale}/testing/login`,
+            icon: LogIn,
         },
         {
             name: "Formularios Clásicos",

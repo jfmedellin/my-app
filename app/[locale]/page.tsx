@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { FlaskConical, MousePointerClick, CheckSquare, Timer, TableProperties, Layers } from "lucide-react";
+import { FlaskConical, MousePointerClick, CheckSquare, Timer, TableProperties, Layers, LogIn } from "lucide-react";
 import Link from "next/link";
 
 interface PageProps {
@@ -10,6 +10,14 @@ export default async function DashboardPage({ params }: PageProps) {
   const { locale } = await params;
 
   const modules = [
+    {
+      title: "Sistema de Login (QA)",
+      description: "Pruebas de autenticación con validación estricta y credenciales de prueba.",
+      icon: LogIn,
+      href: `/${locale}/testing/login`,
+      color: "text-indigo-500",
+      bg: "bg-indigo-500/10",
+    },
     {
       title: "Formularios Clásicos",
       description: "Prueba interacciones con inputs estándar, radio buttons, checkboxes y selects básicos.",
