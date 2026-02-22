@@ -1,61 +1,54 @@
-# WorkFlow - Plataforma para Equipos Modernos
+# QA Sandbox - Plataforma de Testing
 
-WorkFlow es una plataforma SaaS moderna diseñada para ayudar a los equipos a colaborar, gestionar proyectos y alcanzar sus objetivos con eficiencia. Este proyecto utiliza tecnologías de vanguardia para ofrecer una experiencia premium y escalable.
+QA Sandbox es una plataforma interactiva diseñada para que equipos de QA practiquen automatización de pruebas (Playwright, Selenium, Cypress) y prueben estrategias de QA manual.
 
-## 🚀 Tecnologías Principales
+## 🚀 Tecnologías
 
-- **[Next.js 16 (App Router)](https://nextjs.org/)** - El framework de React para la web.
-- **[NextAuth.js v5 Beta](https://authjs.dev/)** - Autenticación flexible y segura.
-- **[next-intl](https://next-intl-docs.vercel.app/)** - Soporte de internacionalización (Español e Inglés).
-- **[Tailwind CSS v4](https://tailwindcss.com/)** - Estilizado moderno y rápido.
-- **[Lucide React](https://lucide.dev/)** - Iconografía elegante.
-- **[Framer Motion](https://www.framer.com/motion/)** - Animaciones fluidas.
+- **[Next.js 16](https://nextjs.org/)** - Framework React con App Router
+- **[NextAuth.js v5](https://authjs.dev/)** - Autenticación
+- **[next-intl](https://next-intl-docs.vercel.app/)** - Internacionalización (ES/EN)
+- **[Tailwind CSS v4](https://tailwindcss.com/)** - Estilos
+- **[shadcn/ui](https://ui.shadcn.com/)** - Componentes UI
+- **[date-fns](https://date-fns.org/)** - Manipulación de fechas
+- **[Lucide React](https://lucide.dev/)** - Iconos
+- **[Framer Motion](https://www.framer.com/motion/)** - Animaciones
 
-## 🛠️ Configuración Inicial
+## 🧪 Módulos de Testing
 
-Para ejecutar este proyecto localmente, sigue estos pasos:
+| Módulo | Descripción |
+|--------|-------------|
+| Sistema de Login | Pruebas de autenticación con validación |
+| Formularios Clásicos | Inputs, radio buttons, checkboxes, selects |
+| Formularios Dinámicos | Datepickers, autocompletado, sliders |
+| Interacciones Asíncronas | Demoras en red, elementos dinámicos |
+| Tablas y Datos | Búsquedas, paginación, filtros |
+| Componentes UI | Tooltips, toasts, modales |
+| Calendarios | Date picker, range picker, month picker, week picker |
 
-1. **Clonar el repositorio:**
-   ```bash
-   git clone <url-del-repo>
-   cd my-app
-   ```
+## 🛠️ Setup
 
-2. **Instalar dependencias:**
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+npm run dev
+```
 
-3. **Configurar variables de entorno:**
-   Crea un archivo `.env.local` en la raíz del proyecto y añade:
-   ```env
-   AUTH_SECRET=tu_secreto_aqui
-   NEXTAUTH_URL=http://localhost:3000
-   ```
+## 🔐 Credenciales Demo
 
-4. **Ejecutar el servidor de desarrollo:**
-   ```bash
-   npm run dev
-   ```
-
-## 🔐 Autenticación de Prueba (Demo)
-
-Actualmente, el proyecto utiliza un proveedor de credenciales simulado para propósitos de prueba:
 - **Email:** `admin@example.com`
 - **Contraseña:** `1234`
 
-## 🌍 Estructura de Idiomas
+## 🌎 Idiomas
 
-El proyecto está configurado para soportar múltiples idiomas mediante rutas:
 - `/es` - Español
 - `/en` - Inglés
 
-Los mensajes de traducción se encuentran en la carpeta `/messages`.
+## 🎨 Características
 
-## 📂 Limpieza del Repositorio
-
-El repositorio ha sido optimizado para producción, eliminando carpetas redundantes y archivos de configuración innecesarios, manteniendo solo la lógica central del negocio y la configuración de Next.js.
+- Modo oscuro/claro con persistencia
+- Diseño minimalista con paleta verde
+- Soporte para testing de automatización
+- IDs organizados para selección con Playwright/Cypress
 
 ---
 
-Desarrollado con ❤️ para equipos modernos.
+Desarrollado para equipos de QA.

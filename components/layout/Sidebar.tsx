@@ -12,6 +12,7 @@ import {
     Layers,
     CheckSquare,
     LogIn,
+    CalendarDays,
 } from "lucide-react";
 
 export function Sidebar({ locale }: { locale: string }) {
@@ -52,6 +53,11 @@ export function Sidebar({ locale }: { locale: string }) {
             name: "Componentes UI",
             href: `/${locale}/testing/ui`,
             icon: Layers,
+        },
+        {
+            name: "Calendarios",
+            href: `/${locale}/testing/calendar`,
+            icon: CalendarDays,
         },
     ];
 
