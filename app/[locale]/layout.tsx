@@ -4,6 +4,8 @@ import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { Providers } from "./components/Providers";
+import { Sidebar } from "@/components/layout/Sidebar";
+import { Header } from "@/components/layout/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,8 +18,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Transform the way you work",
-  description: "The all-in-one platform for modern teams",
+  title: "QA Sandbox",
+  description: "Testing Sandbox para equipos de QA y automatización",
 };
 
 export default async function LocaleLayout({
@@ -32,9 +34,19 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-muted/20 min-h-screen`}>
         <NextIntlClientProvider messages={messages}>
-          <Providers>{children}</Providers>
+          <Providers>
+            <div className="flex bg-background">
+              <Sidebar locale={locale} />
+              <div className="flex-1 ml-64 flex flex-col min-h-screen">
+                <Header locale={locale} />
+                <main className="flex-1 p-8 mt-16 bg-muted/10">
+                  {children}
+                </main>
+              </div>
+            </div>
+          </Providers>
         </NextIntlClientProvider>
       </body>
     </html>
