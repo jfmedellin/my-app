@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CheckCircle2, Circle, Loader2, AlertCircle } from "lucide-react";
+import { CheckCircle2, Loader2, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
@@ -63,61 +63,61 @@ export default function BasicFormsPage() {
                     <CardContent className="space-y-4">
                         <div className="grid gap-2">
                             <Label htmlFor="basic-text">Texto Simple</Label>
-                            <Input 
-                                id="basic-text" 
-                                type="text" 
-                                placeholder="Escribe algo..." 
+                            <Input
+                                id="basic-text"
+                                type="text"
+                                placeholder="Escribe algo..."
                                 data-testid="input-text"
-                                className="transition-all duration-200 focus:ring-2 focus:ring-ring/30" 
+                                className="transition-all duration-200 focus:ring-2 focus:ring-ring/30"
                             />
                         </div>
 
                         <div className="grid gap-2">
                             <Label htmlFor="basic-password">Contrasena (Minimo 8 caracteres)</Label>
-                            <Input 
-                                id="basic-password" 
-                                type="password" 
-                                placeholder="********" 
-                                data-testid="input-password" 
+                            <Input
+                                id="basic-password"
+                                type="password"
+                                placeholder="********"
+                                data-testid="input-password"
                                 minLength={8}
-                                className="transition-all duration-200 focus:ring-2 focus:ring-ring/30" 
+                                className="transition-all duration-200 focus:ring-2 focus:ring-ring/30"
                             />
                         </div>
 
                         <div className="grid gap-2">
                             <Label htmlFor="basic-number">Numero (Rango 1 - 100)</Label>
-                            <Input 
-                                id="basic-number" 
-                                type="number" 
-                                min={1} 
-                                max={100} 
-                                placeholder="Ej: 42" 
+                            <Input
+                                id="basic-number"
+                                type="number"
+                                min={1}
+                                max={100}
+                                placeholder="Ej: 42"
                                 data-testid="input-number"
-                                className="transition-all duration-200 focus:ring-2 focus:ring-ring/30" 
+                                className="transition-all duration-200 focus:ring-2 focus:ring-ring/30"
                             />
                         </div>
 
                         <div className="grid gap-2">
                             <Label htmlFor="basic-disabled">Entrada Deshabilitada</Label>
-                            <Input 
-                                id="basic-disabled" 
-                                type="text" 
-                                disabled 
-                                placeholder="No puedes escribir aqui" 
+                            <Input
+                                id="basic-disabled"
+                                type="text"
+                                disabled
+                                placeholder="No puedes escribir aqui"
                                 data-testid="input-disabled"
-                                className="bg-muted/50 cursor-not-allowed opacity-70" 
+                                className="bg-muted/50 cursor-not-allowed opacity-70"
                             />
                         </div>
 
                         <div className="grid gap-2">
                             <Label htmlFor="basic-readonly">Entrada Solo Lectura</Label>
-                            <Input 
-                                id="basic-readonly" 
-                                type="text" 
-                                readOnly 
-                                defaultValue="Contenido fijo" 
+                            <Input
+                                id="basic-readonly"
+                                type="text"
+                                readOnly
+                                defaultValue="Contenido fijo"
                                 data-testid="input-readonly"
-                                className="bg-muted/30 cursor-not-allowed" 
+                                className="bg-muted/30 cursor-not-allowed"
                             />
                         </div>
                     </CardContent>
@@ -130,11 +130,11 @@ export default function BasicFormsPage() {
                     <CardContent>
                         <div className="grid gap-2">
                             <Label htmlFor="basic-textarea">Comentarios</Label>
-                            <Textarea 
-                                id="basic-textarea" 
-                                placeholder="Escribe un mensaje largo aqui..." 
-                                data-testid="textarea-comments" 
-                                className="min-h-[100px] transition-all duration-200 focus:ring-2 focus:ring-ring/30 resize-none" 
+                            <Textarea
+                                id="basic-textarea"
+                                placeholder="Escribe un mensaje largo aqui..."
+                                data-testid="textarea-comments"
+                                className="min-h-[100px] transition-all duration-200 focus:ring-2 focus:ring-ring/30 resize-none"
                             />
                         </div>
                     </CardContent>
@@ -193,12 +193,12 @@ export default function BasicFormsPage() {
                         <form onSubmit={handleSubmit} className="space-y-4" data-testid="classic-form">
                             <div className="grid gap-2">
                                 <Label htmlFor="form-email">Correo Electronico *</Label>
-                                <Input 
-                                    id="form-email" 
+                                <Input
+                                    id="form-email"
                                     name="email"
-                                    type="email" 
-                                    required 
-                                    placeholder="correo@ejemplo.com" 
+                                    type="email"
+                                    required
+                                    placeholder="correo@ejemplo.com"
                                     data-testid="form-email"
                                     className={cn(
                                         "transition-all duration-200 focus:ring-2 focus:ring-ring/30",
@@ -218,8 +218,8 @@ export default function BasicFormsPage() {
                             <div className="grid gap-2">
                                 <Label htmlFor="form-select">Selector (shadcn/ui) *</Label>
                                 <Select required name="select">
-                                    <SelectTrigger 
-                                        id="form-select" 
+                                    <SelectTrigger
+                                        id="form-select"
                                         className={cn(
                                             "transition-all duration-200",
                                             formStatus === "error" && "border-destructive focus:ring-destructive/30"
@@ -237,12 +237,12 @@ export default function BasicFormsPage() {
                             </div>
 
                             <div className="flex items-start gap-2.5 pt-2">
-                                <input 
-                                    type="checkbox" 
-                                    id="form-terms" 
-                                    required 
-                                    className="w-4 h-4 mt-0.5 cursor-pointer accent-primary" 
-                                    data-testid="form-terms" 
+                                <input
+                                    type="checkbox"
+                                    id="form-terms"
+                                    required
+                                    className="w-4 h-4 mt-0.5 cursor-pointer accent-primary"
+                                    data-testid="form-terms"
                                 />
                                 <Label htmlFor="form-terms" className="text-sm font-normal leading-relaxed cursor-pointer">
                                     Acepto los terminos y condiciones *
@@ -259,9 +259,9 @@ export default function BasicFormsPage() {
                             )}
 
                             <div className="flex flex-col sm:flex-row gap-3">
-                                <Button 
-                                    type="submit" 
-                                    data-testid="submit-btn" 
+                                <Button
+                                    type="submit"
+                                    data-testid="submit-btn"
                                     className="w-full sm:w-auto min-w-[140px]"
                                     disabled={formStatus === "loading"}
                                 >
@@ -274,10 +274,10 @@ export default function BasicFormsPage() {
                                         "Enviar Formulario"
                                     )}
                                 </Button>
-                                <Button 
-                                    type="reset" 
-                                    variant="outline" 
-                                    data-testid="reset-btn" 
+                                <Button
+                                    type="reset"
+                                    variant="outline"
+                                    data-testid="reset-btn"
                                     className="w-full sm:w-auto cursor-pointer"
                                     onClick={handleReset}
                                     disabled={formStatus === "loading"}

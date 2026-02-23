@@ -144,7 +144,7 @@ export default function TablesPage() {
                                 ) : (
                                     <tr>
                                         <td colSpan={5} className="px-4 py-8 text-center text-muted-foreground">
-                                            No se encontraron resultados para "{search}"
+                                            No se encontraron resultados para &quot;{search}&quot;
                                         </td>
                                     </tr>
                                 )}
