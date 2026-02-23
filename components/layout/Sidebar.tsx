@@ -13,6 +13,7 @@ import {
     CheckSquare,
     LogIn,
     CalendarDays,
+    Users,
 } from "lucide-react";
 
 export function Sidebar({ locale }: { locale: string }) {
@@ -25,8 +26,9 @@ export function Sidebar({ locale }: { locale: string }) {
         { name: "Formularios Dinamicos", href: `/${locale}/testing/forms/dynamic`, icon: MousePointerClick },
         { name: "Interacciones Asincronas", href: `/${locale}/testing/async`, icon: Timer },
         { name: "Tablas y Datos", href: `/${locale}/testing/tables`, icon: TableProperties },
-        { name: "Componentes UI", href: `/${locale}/testing/ui`, icon: Layers },
+{ name: "Componentes UI", href: `/${locale}/testing/ui`, icon: Layers },
         { name: "Calendarios", href: `/${locale}/testing/calendar`, icon: CalendarDays },
+        { name: "Usuarios", href: `/${locale}/testing/users`, icon: Users },
     ];
 
     return (

@@ -9,6 +9,11 @@
         "run-test-mcp-server"
       ],
       "enabled": true
+    },
+    "supabase": {
+      "type": "remote",
+      "url": "https://mcp.supabase.com/mcp",
+      "enabled": true
     }
   },
   "tools": {

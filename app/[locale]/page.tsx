@@ -1,5 +1,5 @@
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-import { FlaskConical, MousePointerClick, CheckSquare, Timer, TableProperties, Layers, LogIn, CalendarDays, ArrowRight, Sparkles, Activity, Zap } from "lucide-react";
+import { FlaskConical, MousePointerClick, CheckSquare, Timer, TableProperties, Layers, LogIn, CalendarDays, ArrowRight, Sparkles, Activity, Zap, Users } from "lucide-react";
 import Link from "next/link";
 
 interface PageProps {
@@ -81,10 +81,19 @@ export default async function DashboardPage({ params }: PageProps) {
             bgColor: "bg-teal-500/10",
             hoverBg: "group-hover:bg-teal-500/15",
         },
+        {
+            title: "Usuarios",
+            description: "Modal para gestionar usuarios con Supabase.",
+            icon: Users,
+            href: `/${locale}/testing/users`,
+            color: "text-orange-500",
+            bgColor: "bg-orange-500/10",
+            hoverBg: "group-hover:bg-orange-500/15",
+        },
     ];
 
     const stats = [
-        { label: "Modulos activos", value: "7", icon: Layers, color: "text-primary" },
+        { label: "Modulos activos", value: "8", icon: Layers, color: "text-primary" },
         { label: "Tests disponibles", value: "24+", icon: Activity, color: "text-emerald-500" },
         { label: "Estado", value: "Operativo", icon: Zap, color: "text-amber-500" },
     ];
