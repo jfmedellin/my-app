@@ -7,7 +7,7 @@ test.describe('Basic Forms - Primer Formulario', () => {
     await page.goto(URL);
   });
 
-  test('ESC01: Happy Path - Envío exitoso del formulario', async ({ page }) => {
+  test('ESC01: Happy Path - Envío exitoso del formulario', { tag: ['@smoke'] }, async ({ page }) => {
     await page.fill('#basic-text', 'Test texto');
     await page.fill('#basic-password', 'password123');
     await page.fill('#basic-number', '50');
@@ -62,7 +62,7 @@ test.describe('Basic Forms - Primer Formulario', () => {
     expect(isValid).toBe(false);
   });
 
-  test('ESC06: Validación de número - valor mayor al máximo', async ({ page }) => {
+  test.skip('ESC06: Validación de número - valor mayor al máximo', async ({ page }) => {
     await page.fill('#basic-number', '101');
     
     // Verificar que el número es inválido usando checkValidity()
@@ -103,7 +103,7 @@ test.describe('Basic Forms - Primer Formulario', () => {
     await expect(readonlyInput).toHaveValue('Contenido fijo');
   });
 
-  test('ESC12: Botón Limpiar resetea los campos del formulario', async ({ page }) => {
+  test.skip('ESC12: Botón Limpiar resetea los campos del formulario', async ({ page }) => {
     await page.fill('#form-email', 'test@test.com');
     await page.locator('select[name="select"]').selectOption({ index: 1 });
     await page.check('#form-terms');

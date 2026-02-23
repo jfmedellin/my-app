@@ -4,7 +4,7 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Login Functionality', () => {
-  test('Successful Login - Happy Path', async ({ page }) => {
+  test('Successful Login - Happy Path', { tag: ['@smoke'] }, async ({ page }) => {
     // Navigate to the login page (with explicit locale)
     await page.goto('http://localhost:3000/en/testing/login');
 
@@ -39,7 +39,7 @@ test.describe('Login Functionality', () => {
     await expect(closeButton).toBeVisible();
   });
 
-  test('Failed Login - Invalid Credentials', async ({ page }) => {
+  test('Failed Login - Invalid Credentials', { tag: ['@smoke'] }, async ({ page }) => {
     // Navigate to the login page (with explicit locale)
     await page.goto('http://localhost:3000/en/testing/login');
 

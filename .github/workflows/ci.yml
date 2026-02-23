@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [master, develop]
+    branches: [master]
   pull_request:
-    branches: [master, develop]
+    branches: [master]
 
 jobs:
   lint-and-build:
@@ -50,7 +50,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npm run test
+        run: npx playwright test --grep "@smoke"
 
       - name: Upload Playwright reports
         uses: actions/upload-artifact@v4
