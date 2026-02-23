@@ -13,6 +13,11 @@
 # agents skills (external)
 .agents/
 
+# opencode (use global config)
+opencode.json
+skills-lock.json
+skills/
+
 # testing
 /coverage
 /playwright-report/
