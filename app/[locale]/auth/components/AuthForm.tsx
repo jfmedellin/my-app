@@ -160,4 +160,3 @@ export default function AuthForm({ t }: AuthFormProps) {
     </Card>
   );
 }
-ö

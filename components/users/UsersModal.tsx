@@ -20,8 +20,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
+import { createUser, updateUser } from "@/lib/actions/users"
 
-interface User {
+interface UserFormData {
   id?: number
   email: string
   name: string
@@ -31,18 +32,19 @@ interface User {
 interface UsersModalProps {
   open: boolean
   onOpenChange: (open: boolean) => void
-  user?: User | null
-  onSubmit: (user: User) => void
+  user?: UserFormData | null
+  onSuccess: () => void
 }
 
 export function UsersModal({
   open,
   onOpenChange,
   user,
-  onSubmit,
+  onSuccess,
 }: UsersModalProps) {
   const [isLoading, setIsLoading] = React.useState(false)
-  const [formData, setFormData] = React.useState<User>({
+  const [error, setError] = React.useState<string | null>(null)
+  const [formData, setFormData] = React.useState<UserFormData>({
     email: "",
     name: "",
     role: "user",
@@ -61,14 +63,31 @@ export function UsersModal({
     } else {
       setFormData({ email: "", name: "", role: "user" })
     }
+    setError(null)
   }, [user, open])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
+    setError(null)
     try {
-      await onSubmit(formData)
+      if (isEditing && user?.id) {
+        await updateUser(user.id, {
+          email: formData.email,
+          name: formData.name,
+          role: formData.role,
+        })
+      } else {
+        await createUser({
+          email: formData.email,
+          name: formData.name,
+          role: formData.role,
+        })
+      }
+      onSuccess()
       onOpenChange(false)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Error al guardar usuario")
     } finally {
       setIsLoading(false)
     }
@@ -90,6 +109,11 @@ export function UsersModal({
         </DialogHeader>
         <form onSubmit={handleSubmit}>
           <div className="grid gap-4 py-4">
+            {error && (
+              <div className="p-3 text-sm text-red-600 bg-red-50 rounded-md">
+                {error}
+              </div>
+            )}
             <div className="grid gap-2">
               <label
                 htmlFor="email"

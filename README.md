@@ -12,6 +12,7 @@ QA Sandbox es una plataforma interactiva diseñada para que equipos de QA practi
 - **[date-fns](https://date-fns.org/)** - Manipulación de fechas
 - **[Lucide React](https://lucide.dev/)** - Iconos
 - **[Framer Motion](https://www.framer.com/motion/)** - Animaciones
+- **[Supabase](https://supabase.com/)** - Base de datos y autenticación
 
 ## 🧪 Módulos de Testing
 
@@ -24,6 +25,7 @@ QA Sandbox es una plataforma interactiva diseñada para que equipos de QA practi
 | Tablas y Datos | Búsquedas, paginación, filtros |
 | Componentes UI | Tooltips, toasts, modales |
 | Calendarios | Date picker, range picker, month picker, week picker |
+| Usuarios | CRUD con Supabase: crear, editar, eliminar usuarios |
 
 ## 🛠️ Setup
 
@@ -31,6 +33,18 @@ QA Sandbox es una plataforma interactiva diseñada para que equipos de QA practi
 npm install
 npm run dev
 ```
+
+## 🗄️ Configuración de Supabase
+
+El proyecto usa Supabase como base de datos. Las credenciales se encuentran en `.env.local`:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://bidicoxetxpmlpwdkogi.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=tu-clave-anon
+```
+
+### Tablas disponibles:
+- `users` - Gestión de usuarios con CRUD completo
 
 ## 🔐 Credenciales Demo
 
