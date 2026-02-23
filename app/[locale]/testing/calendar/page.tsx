@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, use } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
@@ -17,7 +17,7 @@ interface PageProps {
 }
 
 export default function CalendarTestingPage({ params }: PageProps) {
-  const resolvedParams = params as unknown as { locale: string };
+  const resolvedParams = use(params);
   const locale = resolvedParams?.locale || "es";
   const dateLocale = locale === "es" ? es : enUS;
 
