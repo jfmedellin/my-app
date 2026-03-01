@@ -29,7 +29,7 @@ export async function authenticate(
     });
 
     if (!validated.success) {
-      return validated.error.errors[0].message;
+      return validated.error.issues[0].message;
     }
 
     // Crear nuevo FormData con datos validados
