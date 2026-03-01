@@ -1,6 +1,7 @@
 "use client"
 
-import { useState, useTransition, useEffect } from "react"
+import useSWR from "swr"
+import { useState, useTransition } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { UsersModal } from "@/components/users/UsersModal"
@@ -10,16 +11,11 @@ import { deleteUser, getUsers, User } from "@/lib/actions/users"
 export default function UsersPage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedUser, setSelectedUser] = useState<User | null>(null)
-  const [users, setUsers] = useState<User[]>([])
   const [isPending, startTransition] = useTransition()
-  const [isLoading, setIsLoading] = useState(true)
 
-  useEffect(() => {
-    getUsers().then((data) => {
-      setUsers(data)
-      setIsLoading(false)
-    })
-  }, [])
+  const { data: users = [], isLoading, mutate } = useSWR<User[]>("users", getUsers, {
+    revalidateOnFocus: false,
+  })
 
   const handleOpenCreate = () => {
     setSelectedUser(null)
@@ -37,7 +33,10 @@ export default function UsersPage() {
     startTransition(async () => {
       try {
         await deleteUser(id)
-        setUsers((prev) => prev.filter((u) => u.id !== id))
+        mutate(
+          (currentUsers) => currentUsers?.filter((u) => u.id !== id) ?? [],
+          false
+        )
       } catch (error) {
         console.error("Error deleting user:", error)
         alert("Error al eliminar usuario")
@@ -46,10 +45,7 @@ export default function UsersPage() {
   }
 
   const handleSuccess = () => {
-    startTransition(async () => {
-      const updatedUsers = await getUsers()
-      setUsers(updatedUsers)
-    })
+    mutate()
   }
 
   if (isLoading) {

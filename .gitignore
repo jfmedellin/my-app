@@ -12,6 +12,7 @@
 
 # agents skills (external)
 .agents/
+.claude/
 
 # opencode (use global config)
 opencode.json

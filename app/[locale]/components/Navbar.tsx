@@ -25,7 +25,7 @@ export default function Navbar({ t, locale }: NavbarProps) {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -109,7 +109,7 @@ export default function Navbar({ t, locale }: NavbarProps) {
           </button>
         </div>
 
-        {isOpen && (
+        {isOpen ? (
           <div className="md:hidden py-4 border-t border-border mt-4 animate-in slide-in-from-top-5 duration-200">
             <div className="flex flex-col gap-2">
               {navLinks.map((link) => (
@@ -151,7 +151,7 @@ export default function Navbar({ t, locale }: NavbarProps) {
               )}
             </div>
           </div>
-        )}
+        ) : null}
       </nav>
     </header>
   );

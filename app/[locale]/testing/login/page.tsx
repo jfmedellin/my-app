@@ -14,8 +14,10 @@ export default function LoginTestingPage() {
     const [error, setError] = useState<string | null>(null);
     const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-    const VALID_USER = "qa_tester";
-    const VALID_PASS = "password123";
+    // Las credenciales se leen del lado del servidor y se pasan como props
+    // O usar un enfoque alternativo para testing
+    const VALID_USER = process.env.NEXT_PUBLIC_AUTH_TEST_USERNAME || "qa_tester";
+    const VALID_PASS = process.env.NEXT_PUBLIC_AUTH_TEST_PASSWORD || "password123";
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
