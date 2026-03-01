@@ -6,8 +6,10 @@ This file provides guidelines and commands for agentic coding agents operating i
 
 - **Framework**: Next.js 16 with React 19 and TypeScript
 - **Styling**: Tailwind CSS v4 with shadcn/ui components
-- **Testing**: Playwright
+- **Testing**: Vitest (unit) + Playwright (E2E)
 - **Authentication**: NextAuth.js v5
+- **Linting**: ESLint + Prettier
+- **Pre-commit hooks**: Lefthook
 
 ---
 
@@ -23,16 +25,36 @@ npm run start        # Start production server
 
 ### Testing
 
+#### Unit Tests (Vitest)
+
 ```bash
-npm run test                    # Run all Playwright tests
-npm run test:headed             # Run tests with browser visible
-npm run test:ui                 # Run tests with Playwright UI
-npm run test:debug              # Run tests in debug mode
-npm run test:install            # Install Playwright browsers
-npm run test:report             # Show Playwright test report
+npm run test              # Run all unit tests
+npm run test:watch        # Run tests in watch mode (auto-reload)
+npm run test:coverage     # Run tests with coverage report
 ```
 
-#### Running a Single Test
+#### Running a Single Unit Test
+
+```bash
+# Run specific test file
+npx vitest run tests/unit/utils/cn.test.ts
+
+# Run tests matching pattern
+npx vitest run --grep "loginSchema"
+
+# Run in watch mode
+npx vitest tests/unit/actions/auth.test.ts
+```
+
+#### E2E Tests (Playwright)
+
+```bash
+npm run test:e2e         # Run all Playwright tests
+npm run test:e2e:ui      # Run tests with Playwright UI
+npm run test:report      # Show Playwright test report
+```
+
+#### Running a Single E2E Test
 
 ```bash
 # By test name (grep)
@@ -48,10 +70,13 @@ npx playwright test tests/forms/basic-form.spec.ts:44
 npx playwright test --grep "ESC01" --reporter=list
 ```
 
-### Linting & Type Checking
+### Linting & Formatting
 
 ```bash
-npm run lint         # Run ESLint
+npm run lint            # Run ESLint
+npm run lint:fix        # Run ESLint with auto-fix
+npm run format          # Format all files with Prettier
+npm run format:check    # Check formatting without changes
 ```
 
 ---
@@ -89,13 +114,24 @@ import { Header } from './header';
 import { Footer } from '../components/footer';
 ```
 
+### Formatting (Prettier)
+
+Prettier is configured in `.prettierrc`. Key rules:
+- Single quotes for strings
+- Semicolons at end of statements
+- 2 space indentation
+- 100 character line width
+- Trailing commas in ES5 contexts
+
+Run `npm run format` before committing to auto-format code.
+
 ### Naming Conventions
 
 - **Components**: PascalCase (e.g., `UserProfile`, `LoginForm`)
 - **Hooks**: camelCase with `use` prefix (e.g., `useAuth`, `useUserData`)
 - **Utils/Constants**: camelCase (e.g., `formatDate`, `API_URL`)
 - **Files**: kebab-case for non-component files (e.g., `api-handler.ts`)
-- **Test files**: `.spec.ts` suffix (e.g., `login.spec.ts`)
+- **Test files**: `.test.ts` for unit tests, `.spec.ts` for E2E tests
 
 ### React Components
 
@@ -146,9 +182,32 @@ try {
 - Follow mobile-first responsive design
 - Use semantic color tokens when available
 
-### Testing (Playwright)
+---
 
-- Test files go in `tests/` directory
+## Testing Guidelines
+
+### Unit Tests (Vitest)
+
+- Test files go in `tests/unit/` directory
+- Use descriptive test names
+- Test pure functions, utilities, and validation schemas
+- Aim for 100% coverage on utilities
+
+```typescript
+import { describe, it, expect } from 'vitest';
+import { cn } from '@/lib/utils';
+
+describe('cn utility', () => {
+  it('should merge class names', () => {
+    const result = cn('foo', 'bar');
+    expect(result).toBe('foo bar');
+  });
+});
+```
+
+### E2E Tests (Playwright)
+
+- Test files go in `tests/` directory (not `tests/unit/`)
 - Use descriptive test names with ID prefix (e.g., `ESC01: Happy Path`)
 - Use `test.describe` to group related tests
 - Use `page.locator()` for element selection over `page.$()`
@@ -168,55 +227,58 @@ test.describe('Login Flow', () => {
 });
 ```
 
-### Next.js Specific
+---
+
+## Next.js Specific
 
 - Use Server Components by default, add `'use client'` only when needed
 - Place API routes in `app/api/` directory
 - Use NextAuth.js for authentication
 - Use next-intl for internationalization
+- Middleware is now called "proxy" in Next.js 16 - use `proxy.ts`
 
-### File Organization
+---
+
+## Pre-commit Hooks
+
+Lefthook is configured to run before each commit:
+- ESLint on staged `.ts`/`.tsx` files
+- Prettier on staged files
+
+To bypass hooks (not recommended): `git commit --no-verify`
+
+---
+
+## File Organization
 
 ```
-src/
+my-app/
 ├── app/                    # Next.js App Router pages
 │   ├── api/               # API routes
 │   └── [locale]/          # Localized routes
 ├── components/
-│   └── ui/                # shadcn/ui components
+│   ├── ui/                # shadcn/ui components
+│   └── layout/            # Layout components
 ├── hooks/                 # Custom React hooks
-├── lib/                   # Utilities and helpers
-└── types/                 # TypeScript type definitions
+├── lib/                   # Utilities, actions, Supabase client
+├── tests/
+│   ├── unit/             # Vitest unit tests
+│   │   ├── utils/
+│   │   └── actions/
+│   └── *.spec.ts         # Playwright E2E tests
+├── proxy.ts               # Next.js middleware (formerly middleware.ts)
+├── vite.config.ts         # Vitest configuration
+└── .prettierrc           # Prettier configuration
 ```
-
----
-
-## Common Patterns
-
-### Form Handling
-
-- Use controlled components with useState
-- Validate on submit and show inline errors
-- Disable submit button while submitting
-
-### Data Fetching
-
-- Use React Server Components for initial data
-- Use SWR/TanStack Query for client-side fetching
-- Handle loading and error states
-
-### Component Props
-
-- Make props optional with defaults when sensible
-- Use union types for limited options
-- Document complex props with JSDoc when needed
 
 ---
 
 ## Notes for Agents
 
-- Always verify tests pass before submitting changes
-- Run `npm run lint` before committing
+- Always verify tests pass before submitting changes: `npm run test`
+- Run `npm run lint:fix` and `npm run format` before committing
 - Use type-safe approaches (avoid `as` assertions when possible)
 - Keep components small and focused
 - Write meaningful commit messages when asked to commit
+- Run `npm run build` to verify production build works
+- Zod v4 uses `.issues` instead of `.errors` for validation errors

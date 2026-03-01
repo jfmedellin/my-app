@@ -13,6 +13,10 @@ QA Sandbox es una plataforma interactiva diseñada para que equipos de QA practi
 - **[Lucide React](https://lucide.dev/)** - Iconos
 - **[Framer Motion](https://www.framer.com/motion/)** - Animaciones
 - **[Supabase](https://supabase.com/)** - Base de datos y autenticación
+- **[Vitest](https://vitest.dev/)** - Tests unitarios
+- **[Playwright](https://playwright.dev/)** - Tests E2E
+- **[Prettier](https://prettier.io/)** - Formateo de código
+- **[ESLint](https://eslint.org/)** - Linting
 
 ## 🧪 Módulos de Testing
 
@@ -32,6 +36,33 @@ QA Sandbox es una plataforma interactiva diseñada para que equipos de QA practi
 ```bash
 npm install
 npm run dev
+```
+
+## 🧪 Testing
+
+### Unit Tests (Vitest)
+
+```bash
+npm run test              # Run all unit tests
+npm run test:watch        # Run tests in watch mode
+npm run test:coverage     # Run tests with coverage report
+```
+
+### E2E Tests (Playwright)
+
+```bash
+npm run test:e2e          # Run all E2E tests
+npm run test:e2e:ui       # Run tests with UI
+npm run test:report       # Show test report
+```
+
+### Linting & Formatting
+
+```bash
+npm run lint              # Run ESLint
+npm run lint:fix          # Fix lint errors
+npm run format            # Format code with Prettier
+npm run format:check     # Check formatting
 ```
 
 ## 🗄️ Configuración de Supabase
