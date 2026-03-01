@@ -1,26 +1,23 @@
-"use server";
+'use server';
 
-import { signIn } from "@/auth";
-import { AuthError } from "next-auth";
-import { z } from "zod";
+import { signIn } from '@/auth';
+import { AuthError } from 'next-auth';
+import { z } from 'zod';
 
 // Schema de validación
 const loginSchema = z.object({
-  username: z.string().email("Debe ser un email válido"),
-  password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres"),
+  username: z.string().email('Debe ser un email válido'),
+  password: z.string().min(6, 'La contraseña debe tener al menos 6 caracteres'),
 });
 
-export async function authenticate(
-  prevState: string | undefined,
-  formData: FormData
-) {
+export async function authenticate(prevState: string | undefined, formData: FormData) {
   try {
     // Validar datos de entrada
-    const rawUsername = formData.get("username");
-    const rawPassword = formData.get("password");
+    const rawUsername = formData.get('username');
+    const rawPassword = formData.get('password');
 
-    if (typeof rawUsername !== "string" || typeof rawPassword !== "string") {
-      return "Datos inválidos";
+    if (typeof rawUsername !== 'string' || typeof rawPassword !== 'string') {
+      return 'Datos inválidos';
     }
 
     const validated = loginSchema.safeParse({
@@ -34,17 +31,17 @@ export async function authenticate(
 
     // Crear nuevo FormData con datos validados
     const validatedFormData = new FormData();
-    validatedFormData.set("username", validated.data.username);
-    validatedFormData.set("password", validated.data.password);
+    validatedFormData.set('username', validated.data.username);
+    validatedFormData.set('password', validated.data.password);
 
-    await signIn("credentials", validatedFormData);
+    await signIn('credentials', validatedFormData);
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
-        case "CredentialsSignin":
-          return "Credenciales inválidas";
+        case 'CredentialsSignin':
+          return 'Credenciales inválidas';
         default:
-          return "Algo salió mal";
+          return 'Algo salió mal';
       }
     }
     throw error;
