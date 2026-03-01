@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2026-03-01
 
 ### Added
+
 - **Unit Testing**: Added Vitest for unit tests with coverage reports
   - Test files in `tests/unit/` directory
   - Run with `npm run test` or `npm run test:coverage`
@@ -24,14 +25,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Lint → Unit Tests → Build → E2E Tests pipeline
 
 ### Changed
+
 - **Next.js 16**: Renamed `middleware.ts` to `proxy.ts` (new convention)
 - **Package.json**: Updated to use ES Modules (`"type": "module"`)
 - **Zod v4**: Updated validation to use `.issues` instead of `.errors`
 
 ### Fixed
+
 - Build error: Zod validation in `lib/actions/auth.ts` was using deprecated `.errors` property
 
 ### Dependencies Added
+
 - `vitest` - Unit testing framework
 - `@vitejs/plugin-react` - React plugin for Vitest
 - `jsdom` - DOM environment for testing

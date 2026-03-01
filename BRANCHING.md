@@ -2,25 +2,26 @@
 
 ## Ramas Principales
 
-| Rama | Propósito | Protegida |
-|------|-----------|-----------|
-| `master` | Código en producción | ✅ Sí |
-| `develop` | Código en desarrollo integración | ✅ Sí |
+| Rama      | Propósito                        | Protegida |
+| --------- | -------------------------------- | --------- |
+| `master`  | Código en producción             | ✅ Sí     |
+| `develop` | Código en desarrollo integración | ✅ Sí     |
 
 ## Ramas de Soporte
 
-| Prefijo | Ejemplo | Descripción |
-|---------|---------|-------------|
-| `feature/` | `feature/login` | Nuevas funcionalidades |
-| `bugfix/` | `bugfix/fix-login` | Correcciones de bugs |
-| `hotfix/` | `hotfix/security-patch` | Correcciones urgentes en producción |
-| `release/` | `release/v1.0.0` | Preparación de versiones |
+| Prefijo    | Ejemplo                 | Descripción                         |
+| ---------- | ----------------------- | ----------------------------------- |
+| `feature/` | `feature/login`         | Nuevas funcionalidades              |
+| `bugfix/`  | `bugfix/fix-login`      | Correcciones de bugs                |
+| `hotfix/`  | `hotfix/security-patch` | Correcciones urgentes en producción |
+| `release/` | `release/v1.0.0`        | Preparación de versiones            |
 
 ---
 
 ## Flujo de Trabajo
 
 ### 1. Nueva funcionalidad (feature)
+
 ```bash
 # Crear rama desde develop
 git checkout -b feature/nueva-funcionalidad develop
@@ -34,6 +35,7 @@ git push -u origin feature/nueva-funcionalidad
 ```
 
 ### 2. Corrección de bug (bugfix)
+
 ```bash
 # Crear rama desde develop
 git checkout -b bugfix/descripcion-bug develop
@@ -47,6 +49,7 @@ git push -u origin bugfix/descripcion-bug
 ```
 
 ### 3. Release
+
 ```bash
 # Crear rama de release desde develop
 git checkout -b release/v1.0.0 develop
@@ -65,6 +68,7 @@ git branch -d release/v1.0.0
 ```
 
 ### 4. Hotfix (urgente)
+
 ```bash
 # Crear rama desde master
 git checkout -b hotfix/descripcion-hotfix master
@@ -116,6 +120,7 @@ chore: tareas de mantenimiento
 ```
 
 Ejemplos:
+
 - `feat: add user login`
 - `fix: resolve form validation error`
 - `docs: update README`

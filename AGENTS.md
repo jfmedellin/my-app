@@ -117,6 +117,7 @@ import { Footer } from '../components/footer';
 ### Formatting (Prettier)
 
 Prettier is configured in `.prettierrc`. Key rules:
+
 - Single quotes for strings
 - Semicolons at end of statements
 - 2 space indentation
@@ -242,6 +243,7 @@ test.describe('Login Flow', () => {
 ## Pre-commit Hooks
 
 Lefthook is configured to run before each commit:
+
 - ESLint on staged `.ts`/`.tsx` files
 - Prettier on staged files
 

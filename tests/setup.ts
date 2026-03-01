@@ -1,10 +1,10 @@
-import '@testing-library/dom'
-import { cleanup } from '@testing-library/react'
-import { afterEach, vi } from 'vitest'
+import '@testing-library/dom';
+import { cleanup } from '@testing-library/react';
+import { afterEach, vi } from 'vitest';
 
 afterEach(() => {
-  cleanup()
-})
+  cleanup();
+});
 
 vi.mock('next/navigation', () => ({
   useRouter: () => ({
@@ -13,4 +13,4 @@ vi.mock('next/navigation', () => ({
     back: vi.fn(),
   }),
   usePathname: () => '/',
-}))
+}));

@@ -20,16 +20,16 @@ QA Sandbox es una plataforma interactiva diseñada para que equipos de QA practi
 
 ## 🧪 Módulos de Testing
 
-| Módulo | Descripción |
-|--------|-------------|
-| Sistema de Login | Pruebas de autenticación con validación |
-| Formularios Clásicos | Inputs, radio buttons, checkboxes, selects |
-| Formularios Dinámicos | Datepickers, autocompletado, sliders |
-| Interacciones Asíncronas | Demoras en red, elementos dinámicos |
-| Tablas y Datos | Búsquedas, paginación, filtros |
-| Componentes UI | Tooltips, toasts, modales |
-| Calendarios | Date picker, range picker, month picker, week picker |
-| Usuarios | CRUD con Supabase: crear, editar, eliminar usuarios |
+| Módulo                   | Descripción                                          |
+| ------------------------ | ---------------------------------------------------- |
+| Sistema de Login         | Pruebas de autenticación con validación              |
+| Formularios Clásicos     | Inputs, radio buttons, checkboxes, selects           |
+| Formularios Dinámicos    | Datepickers, autocompletado, sliders                 |
+| Interacciones Asíncronas | Demoras en red, elementos dinámicos                  |
+| Tablas y Datos           | Búsquedas, paginación, filtros                       |
+| Componentes UI           | Tooltips, toasts, modales                            |
+| Calendarios              | Date picker, range picker, month picker, week picker |
+| Usuarios                 | CRUD con Supabase: crear, editar, eliminar usuarios  |
 
 ## 🛠️ Setup
 
@@ -75,6 +75,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=tu-clave-anon
 ```
 
 ### Tablas disponibles:
+
 - `users` - Gestión de usuarios con CRUD completo
 
 ## 🔐 Credenciales Demo
