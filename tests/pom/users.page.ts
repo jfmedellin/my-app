@@ -13,6 +13,9 @@ export class UsersPage extends BasePage {
   readonly cancelButton: Locator;
   readonly deleteButtons: Locator;
   readonly editButtons: Locator;
+  readonly roleOption: (role: string) => Locator;
+  readonly userCardByText: (text: string) => Locator;
+  readonly userCard: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -27,6 +30,10 @@ export class UsersPage extends BasePage {
     this.cancelButton = page.getByRole('button', { name: 'Cancelar' });
     this.deleteButtons = page.locator('button svg.lucide-trash2, button svg.lucide-trash');
     this.editButtons = page.getByRole('button', { name: 'Editar' });
+    this.roleOption = (role: string) =>
+      page.locator('[role="listbox"] [role="option"]').filter({ hasText: role });
+    this.userCardByText = (text: string) => page.locator(`text=${text}`);
+    this.userCard = page.locator('.space-y-2 > div');
   }
 
   async goto(): Promise<void> {
@@ -55,7 +62,7 @@ export class UsersPage extends BasePage {
 
   async selectRole(role: string): Promise<void> {
     await this.roleCombobox.click();
-    await this.page.locator('[role="listbox"] [role="option"]', { hasText: role }).click();
+    await this.roleOption(role).click();
   }
 
   async openEditUserDialog(): Promise<void> {
@@ -85,10 +92,10 @@ export class UsersPage extends BasePage {
   }
 
   async userExists(email: string): Promise<boolean> {
-    return this.page.locator(`text=${email}`).isVisible();
+    return this.userCardByText(email).isVisible();
   }
 
   async getFirstUserCard(): Promise<Locator> {
-    return this.page.locator('.space-y-2 > div').first();
+    return this.userCard.first();
   }
 }
