@@ -284,4 +284,3 @@ my-app/
 - Write meaningful commit messages when asked to commit
 - Run `npm run build` to verify production build works
 - Zod v4 uses `.issues` instead of `.errors` for validation errors
-
