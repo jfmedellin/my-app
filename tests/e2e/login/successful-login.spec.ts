@@ -1,4 +1,4 @@
-import { LoginPage } from '../pom/login.page';
+import { LoginPage } from '../page-objects/login.page';
 import { appFixtures } from '../fixtures/app.fixture';
 
 const test = appFixtures;

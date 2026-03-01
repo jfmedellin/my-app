@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { test as base, Page, Dialog } from '@playwright/test';
+import { test as base, type Page, type Dialog } from '@playwright/test';
 
 type DialogAction = 'accept' | 'dismiss';
 

@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test';
-import { UsersPage } from '../pom/users.page';
+import { UsersPage } from '../page-objects/users.page';
 import { appFixtures } from '../fixtures/app.fixture';
 
 const test = appFixtures;
