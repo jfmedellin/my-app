@@ -1,128 +1,94 @@
-import { test, expect } from '@playwright/test';
+import { expect } from '@playwright/test';
+import { FormsPage } from '../pom/forms.page';
+import { appFixtures } from '../fixtures/app.fixture';
+
+const test = appFixtures;
 
 test.describe('Basic Forms - Primer Formulario', () => {
-  const URL = 'http://localhost:3000/en/testing/forms/basic';
+  let formsPage: FormsPage;
 
   test.beforeEach(async ({ page }) => {
-    await page.goto(URL);
+    formsPage = new FormsPage(page);
+    await formsPage.goto();
   });
 
-  test('ESC01: Happy Path - Envío exitoso del formulario', { tag: ['@smoke'] }, async ({ page }) => {
-    await page.fill('#basic-text', 'Test texto');
-    await page.fill('#basic-password', 'password123');
-    await page.fill('#basic-number', '50');
-    await page.fill('#basic-textarea', 'Comentario de prueba');
-    await page.check('#check-op1');
-    await page.check('#radio-op1');
-    await page.fill('#form-email', 'test@ejemplo.com');
-    await page.selectOption('#form-email', { label: 'Option 1' }).catch(() => {
-      return page.locator('select[name="select"]').selectOption({ index: 1 });
+  test('ESC01: Happy Path - Envío exitoso del formulario', { tag: ['@smoke'] }, async () => {
+    await formsPage.fillForm({
+      text: 'Test texto',
+      password: 'password123',
+      number: '50',
+      textarea: 'Comentario de prueba',
+      email: 'test@ejemplo.com',
+      select: 'Option 1',
+      checkOp1: true,
+      radioOp1: true,
+      terms: true,
     });
-    await page.check('#form-terms');
-    
-    await page.click('button[type="submit"]');
-    
-    await expect(page).toHaveURL(/testing\/forms\/basic/);
+    await formsPage.submit();
+    await formsPage.expectUrlContains('testing/forms/basic');
   });
 
-  test('ESC02: Validación de correo electrónico requerido', async ({ page }) => {
-    await page.click('button[type="submit"]');
-    
-    const emailInput = page.locator('#form-email');
-    await expect(emailInput).toHaveAttribute('required');
+  test('ESC02: Validación de correo electrónico requerido', async () => {
+    await formsPage.submit();
+    await formsPage.expectEmailRequired();
   });
 
-  test('ESC03: Validación de formato de correo electrónico', async ({ page }) => {
-    await page.fill('#form-email', 'correo-invalido');
-    
-    // Verificar que el email es inválido usando checkValidity()
-    const emailInput = page.locator('#form-email');
-    const isValid = await emailInput.evaluate((el: HTMLInputElement) => el.checkValidity());
+  test('ESC03: Validación de formato de correo electrónico', async () => {
+    const isValid = await formsPage.expectEmailInvalid('correo-invalido');
     expect(isValid).toBe(false);
   });
 
-  test('ESC04: Validación de contraseña - menos de 8 caracteres', async ({ page }) => {
-    await page.fill('#basic-password', 'password123');
-    await page.fill('#basic-password', '123');
-    
-    const passwordInput = page.locator('#basic-password');
-    const minLength = await passwordInput.getAttribute('minlength');
-    expect(minLength).toBe('8');
-    
-    const valueLength = (await passwordInput.inputValue()).length;
-    expect(valueLength).toBeLessThan(8);
+  test('ESC04: Validación de contraseña - menos de 8 caracteres', async () => {
+    await formsPage.expectPasswordMinLength('8');
+    await formsPage.passwordInput.fill('123');
+    const valueLength = await formsPage.passwordInput.inputValue();
+    expect(valueLength.length).toBeLessThan(8);
   });
 
-  test('ESC05: Validación de número - valor menor al mínimo', async ({ page }) => {
-    const numberInput = page.locator('#basic-number');
-    await expect(numberInput).toHaveAttribute('min', '1');
-    await numberInput.fill('0');
-    await expect(numberInput).toHaveJSProperty('validity.valid', false);
+  test('ESC05: Validación de número - valor menor al mínimo', async () => {
+    await formsPage.expectNumberRange('1', '100');
+    await formsPage.expectNumberValid('0', false);
   });
 
-  test('ESC06: Validación de número - valor mayor al máximo', async ({ page }) => {
-    const numberInput = page.locator('#basic-number');
-    await expect(numberInput).toHaveAttribute('max', '100');
-    await numberInput.fill('101');
-    await expect(numberInput).toHaveJSProperty('validity.valid', false);
+  test('ESC06: Validación de número - valor mayor al máximo', async () => {
+    await formsPage.expectNumberValid('101', false);
   });
 
-  test('ESC07: Validación de número - valor dentro del rango', async ({ page }) => {
-    const numberInput = page.locator('#basic-number');
-    await numberInput.fill('50');
-    await expect(numberInput).toHaveJSProperty('validity.valid', true);
+  test('ESC07: Validación de número - valor dentro del rango', async () => {
+    await formsPage.expectNumberValid('50', true);
   });
 
-  test('ESC08: Campo deshabilitado - texto no editable', async ({ page }) => {
-    const disabledInput = page.locator('#basic-disabled');
-    await expect(disabledInput).toBeDisabled();
-    
-    await expect(disabledInput).toHaveValue('');
+  test('ESC08: Campo deshabilitado - texto no editable', async () => {
+    await formsPage.expectDisabledInputDisabled();
   });
 
-  test('ESC09: Checkbox deshabilitado no interactuable', async ({ page }) => {
-    const disabledCheckbox = page.locator('#check-disabled');
-    await expect(disabledCheckbox).toBeDisabled();
+  test('ESC09: Checkbox deshabilitado no interactuable', async () => {
+    await formsPage.expectDisabledCheckboxDisabled();
   });
 
-  test('ESC10: Radio button deshabilitado no selectable', async ({ page }) => {
-    const disabledRadio = page.locator('#radio-disabled');
-    await expect(disabledRadio).toBeDisabled();
+  test('ESC10: Radio button deshabilitado no selectable', async () => {
+    await formsPage.expectDisabledRadioDisabled();
   });
 
-  test('ESC11: Campo solo lectura no editable', async ({ page }) => {
-    const readonlyInput = page.locator('#basic-readonly');
-    await expect(readonlyInput).toHaveAttribute('readonly', '');
-    await expect(readonlyInput).toHaveValue('Contenido fijo');
+  test('ESC11: Campo solo lectura no editable', async () => {
+    await formsPage.expectReadonlyInput();
   });
 
-  test('ESC12: Botón Limpiar resetea los campos del formulario', async ({ page }) => {
-    await page.fill('#form-email', 'test@test.com');
-    // Forzar selección en el select nativo o shadcn si es posible
-    await page.locator('select[name="select"]').selectOption({ index: 1 }).catch(() => {});
-    await page.check('#form-terms');
-    
-    await page.locator('button[data-testid="reset-btn"]').click();
-    
-    await expect(page.locator('#form-email')).toHaveValue('');
-    // El select puede volver a su valor por defecto
-    await expect(page.locator('#form-terms')).not.toBeChecked();
+  test('ESC12: Botón Limpiar resetea los campos del formulario', async () => {
+    await formsPage.fillForm({ email: 'test@test.com', select: 'Option 1', terms: true });
+    await formsPage.reset();
+    await formsPage.expectFormReset();
   });
 
-  test('ESC13: Checkbox Opción 2 marcado por defecto', async ({ page }) => {
-    const checkboxOp2 = page.locator('#check-op2');
-    await expect(checkboxOp2).toBeChecked();
+  test('ESC13: Checkbox Opción 2 marcado por defecto', async () => {
+    await formsPage.expectCheckOp2Checked();
   });
 
-  test('ESC14: Validación de términos requeridos', async ({ page }) => {
-    await page.fill('#form-email', 'test@test.com');
-    
-    const termsCheckbox = page.locator('#form-terms');
-    await expect(termsCheckbox).toHaveAttribute('required');
+  test('ESC14: Validación de términos requeridos', async () => {
+    await formsPage.expectTermsRequired();
   });
 
-  test('ESC15: Validación de selector requerido', async ({ page }) => {
-    const selectElement = page.locator('select[name="select"]');
-    await expect(selectElement).toHaveAttribute('required');
+  test('ESC15: Validación de selector requerido', async () => {
+    await formsPage.expectSelectRequired();
   });
 });
