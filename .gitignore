@@ -10,8 +10,21 @@
 !.yarn/releases
 !.yarn/versions
 
+# agents skills (external)
+.agents/
+.claude/
+
+# opencode (use global config)
+opencode.json
+skills-lock.json
+skills/
+
 # testing
 /coverage
+/playwright-report/
+/test-results/
+/playwright/.cache/
+/test-results/
 
 # next.js
 /.next/

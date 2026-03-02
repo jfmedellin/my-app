@@ -4,39 +4,51 @@ import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { Providers } from "./components/Providers";
+import { Sidebar } from "@/components/layout/Sidebar";
+import { Header } from "@/components/layout/Header";
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+    variable: "--font-geist-sans",
+    subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+    variable: "--font-geist-mono",
+    subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Transform the way you work",
-  description: "The all-in-one platform for modern teams",
+    title: "QA Sandbox",
+    description: "Testing Sandbox para equipos de QA y automatizacion",
 };
 
 export default async function LocaleLayout({
-  children,
-  params,
+    children,
+    params,
 }: {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+    children: React.ReactNode;
+    params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
-  const messages = await getMessages();
+    const { locale } = await params;
+    const messages = await getMessages();
 
-  return (
-    <html lang={locale}>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <NextIntlClientProvider messages={messages}>
-          <Providers>{children}</Providers>
-        </NextIntlClientProvider>
-      </body>
-    </html>
-  );
+    return (
+        <html lang={locale} suppressHydrationWarning>
+            <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-muted/20 min-h-screen`}>
+                <NextIntlClientProvider messages={messages}>
+                    <Providers>
+                        <div className="flex bg-background">
+                            <Sidebar locale={locale} />
+                            <div className="flex-1 md:ml-64 flex flex-col min-h-screen">
+                                <Header locale={locale} />
+                                <main className="flex-1 p-4 md:p-8 mt-16 bg-muted/10">
+                                    {children}
+                                </main>
+                            </div>
+                        </div>
+                    </Providers>
+                </NextIntlClientProvider>
+            </body>
+        </html>
+    );
 }

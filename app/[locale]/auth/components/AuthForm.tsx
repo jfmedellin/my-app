@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
-import { signIn } from "next-auth/react";
+import { useActionState, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { authenticate } from "@/lib/actions/auth";
 
 interface AuthFormProps {
   t: {
@@ -25,41 +25,13 @@ interface AuthFormProps {
 
 export default function AuthForm({ t }: AuthFormProps) {
   const [isLogin, setIsLogin] = useState(true);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [signupError, setSignupError] = useState<string | null>(null);
+  const [error, action, isPending] = useActionState(authenticate, undefined);
   const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
-
-    try {
-      if (isLogin) {
-        const result = await signIn("credentials", {
-          redirect: false,
-          username: email.trim(),
-          password: password.trim(),
-        });
-
-        if (result?.error) {
-          setError("Invalid credentials");
-        } else {
-          router.push("/");
-          router.refresh();
-        }
-      } else {
-        setError("Sign up is not configured in this demo.");
-      }
-    } catch (err) {
-      setError("An error occurred during authentication.");
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
+  const handleSuccess = () => {
+    router.push("/");
+    router.refresh();
   };
 
   return (
@@ -70,76 +42,121 @@ export default function AuthForm({ t }: AuthFormProps) {
           {t.description}
         </CardDescription>
       </CardHeader>
-      <form onSubmit={handleSubmit}>
-        <CardContent className="space-y-4">
-          {error && (
-            <div className="bg-destructive/15 text-destructive text-sm p-3 rounded-md">
-              {error}
+      {isLogin ? (
+        <form action={async (formData) => {
+          const result = await action(formData);
+          if (result === undefined) {
+            handleSuccess();
+          }
+        }}>
+          <CardContent className="space-y-4">
+            {error && (
+              <div className="bg-destructive/15 text-destructive text-sm p-3 rounded-md">
+                {error}
+              </div>
+            )}
+            <div className="space-y-2">
+              <Label htmlFor="username">{t.email}</Label>
+              <Input
+                id="username"
+                name="username"
+                type="text"
+                placeholder={t.email}
+                required
+              />
             </div>
-          )}
-          <div className="space-y-2">
-            <Label htmlFor="email">{t.email}</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder={t.email}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="password">{t.password}</Label>
-            <Input
-              id="password"
-              type="password"
-              placeholder={t.password}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          {!isLogin && (
+            <div className="space-y-2">
+              <Label htmlFor="password">{t.password}</Label>
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                placeholder={t.password}
+                required
+              />
+            </div>
+          </CardContent>
+          <CardFooter className="flex flex-col space-y-4">
+            <Button type="submit" className="w-full" disabled={isPending}>
+              {isPending ? "Loading..." : t.login}
+            </Button>
+            <div className="text-center text-sm">
+              <Button
+                variant="link"
+                onClick={() => setIsLogin(false)}
+                className="text-muted-foreground"
+                type="button"
+              >
+                {t.dontHaveAccount}
+              </Button>
+            </div>
+            <div className="text-center text-sm">
+              <Button
+                variant="link"
+                className="text-muted-foreground"
+                type="button"
+              >
+                {t.forgotPassword}
+              </Button>
+            </div>
+          </CardFooter>
+        </form>
+      ) : (
+        <form onSubmit={(e) => {
+          e.preventDefault();
+          setSignupError("Sign up is not configured in this demo.");
+        }}>
+          <CardContent className="space-y-4">
+            {signupError && (
+              <div className="bg-destructive/15 text-destructive text-sm p-3 rounded-md">
+                {signupError}
+              </div>
+            )}
+            <div className="space-y-2">
+              <Label htmlFor="signup-email">{t.email}</Label>
+              <Input
+                id="signup-email"
+                type="email"
+                placeholder={t.email}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="signup-password">{t.password}</Label>
+              <Input
+                id="signup-password"
+                type="password"
+                placeholder={t.password}
+                required
+              />
+            </div>
             <div className="space-y-2">
               <Label htmlFor="confirmPassword">{t.confirmPassword}</Label>
               <Input
                 id="confirmPassword"
                 type="password"
                 placeholder={t.confirmPassword}
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               />
             </div>
-          )}
-        </CardContent>
-        <CardFooter className="flex flex-col space-y-4">
-          <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? "Loading..." : isLogin ? t.login : t.signup}
-          </Button>
-          <div className="text-center text-sm">
-            <Button
-              variant="link"
-              onClick={() => setIsLogin(!isLogin)}
-              className="text-muted-foreground"
-            >
-              {isLogin
-                ? t.dontHaveAccount
-                : t.haveAccount}
+          </CardContent>
+          <CardFooter className="flex flex-col space-y-4">
+            <Button type="submit" className="w-full" disabled>
+              {t.signup}
             </Button>
-          </div>
-          {isLogin && (
             <div className="text-center text-sm">
               <Button
                 variant="link"
+                onClick={() => setIsLogin(true)}
                 className="text-muted-foreground"
+                type="button"
               >
-                {t.forgotPassword}
+                {t.haveAccount}
               </Button>
             </div>
-          )}
-        </CardFooter>
-      </form>
+          </CardFooter>
+        </form>
+      )}
     </Card>
   );
 }
