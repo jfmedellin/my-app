@@ -6,6 +6,13 @@ on:
   pull_request:
     branches: [master, develop]
 
+env:
+  NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+  NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+  AUTH_TEST_USERNAME: ${{ secrets.AUTH_TEST_USERNAME }}
+  AUTH_TEST_PASSWORD: ${{ secrets.AUTH_TEST_PASSWORD }}
+
 jobs:
   unit-tests:
     runs-on: ubuntu-latest
