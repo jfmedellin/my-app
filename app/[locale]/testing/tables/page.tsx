@@ -144,14 +144,18 @@ export default function TablesPage() {
           <h1 className="text-2xl font-bold tracking-tight font-mono">
             <span className="text-primary">&gt;</span> Directorio de Usuarios
           </h1>
-          <p className="text-muted-foreground mt-1 font-mono text-sm">{/* {filteredData.length} registros encontrados en la base de datos */}</p>
+          <p className="text-muted-foreground mt-1 font-mono text-sm">
+            {/* {filteredData.length} registros encontrados en la base de datos */}
+          </p>
         </div>
       </div>
 
       {/* Demo Data Indicator */}
       <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-900/50">
         <AlertTriangle className="size-4 text-amber-600 dark:text-amber-500" />
-        <p className="text-xs font-mono text-amber-800 dark:text-amber-400">{/* Datos de prueba - Demo Data Only */}</p>
+        <p className="text-xs font-mono text-amber-800 dark:text-amber-400">
+          {/* Datos de prueba - Demo Data Only */}
+        </p>
       </div>
 
       <Card className="border-dashed">
@@ -259,7 +263,9 @@ export default function TablesPage() {
                     <td
                       colSpan={5}
                       className="px-4 py-8 text-center text-muted-foreground font-mono text-sm"
-                    >{/* Sin resultados para &quot;{search}&quot; */}</td>
+                    >
+                      {/* Sin resultados para &quot;{search}&quot; */}
+                    </td>
                   </tr>
                 )}
               </tbody>
@@ -268,7 +274,9 @@ export default function TablesPage() {
 
           {/* Paginación */}
           <div className="flex items-center justify-between pt-2">
-            <div className="text-sm text-muted-foreground font-mono text-xs">{/* página {currentPage} de {totalPages || 1} */}</div>
+            <div className="text-sm text-muted-foreground font-mono text-xs">
+              {/* página {currentPage} de {totalPages || 1} */}
+            </div>
             <div className="flex items-center gap-2">
               <Button
                 variant="outline"

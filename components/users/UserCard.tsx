@@ -127,7 +127,9 @@ export function UsersEmpty() {
         <User className="size-6 text-muted-foreground" />
       </div>
       <h3 className="text-base font-semibold font-mono">&gt; No hay registros</h3>
-      <p className="text-sm text-muted-foreground mt-1 mb-4 font-mono text-xs">{/* Inicializa la tabla de usuarios */}</p>
+      <p className="text-sm text-muted-foreground mt-1 mb-4 font-mono text-xs">
+        {/* Inicializa la tabla de usuarios */}
+      </p>
     </div>
   );
 }

@@ -65,13 +65,17 @@ export default function BasicFormsPage() {
         <h1 className="text-2xl font-bold tracking-tight font-mono">
           <span className="text-primary">&gt;</span> Formularios Básicos
         </h1>
-        <p className="text-muted-foreground mt-1 font-mono text-sm">{/* Elementos de entrada HTML para pruebas de automatización */}</p>
+        <p className="text-muted-foreground mt-1 font-mono text-sm">
+          {/* Elementos de entrada HTML para pruebas de automatización */}
+        </p>
       </div>
 
       {/* Demo Data Indicator */}
       <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-900/50">
         <AlertTriangle className="size-4 text-amber-600 dark:text-amber-500" />
-        <p className="text-xs font-mono text-amber-800 dark:text-amber-400">{/* Entorno de pruebas - Demo Only */}</p>
+        <p className="text-xs font-mono text-amber-800 dark:text-amber-400">
+          {/* Entorno de pruebas - Demo Only */}
+        </p>
       </div>
 
       <div className="grid gap-6">
@@ -88,7 +92,9 @@ export default function BasicFormsPage() {
               <label
                 htmlFor="basic-text"
                 className="text-xs font-medium font-mono text-muted-foreground"
-              >{/* Ingresa texto simple */}</label>
+              >
+                {/* Ingresa texto simple */}
+              </label>
               <Input
                 id="basic-text"
                 type="text"
@@ -102,7 +108,9 @@ export default function BasicFormsPage() {
               <label
                 htmlFor="basic-password"
                 className="text-xs font-medium font-mono text-muted-foreground"
-              >{/* Contraseña (minimo 8 caracteres) */}</label>
+              >
+                {/* Contraseña (minimo 8 caracteres) */}
+              </label>
               <Input
                 id="basic-password"
                 type="password"
@@ -117,7 +125,9 @@ export default function BasicFormsPage() {
               <label
                 htmlFor="basic-number"
                 className="text-xs font-medium font-mono text-muted-foreground"
-              >{/* Número (rango 1 - 100) */}</label>
+              >
+                {/* Número (rango 1 - 100) */}
+              </label>
               <Input
                 id="basic-number"
                 type="number"
@@ -133,7 +143,9 @@ export default function BasicFormsPage() {
               <label
                 htmlFor="basic-disabled"
                 className="text-xs font-medium font-mono text-muted-foreground"
-              >{/* Entrada deshabilitada */}</label>
+              >
+                {/* Entrada deshabilitada */}
+              </label>
               <Input
                 id="basic-disabled"
                 type="text"
@@ -148,7 +160,9 @@ export default function BasicFormsPage() {
               <label
                 htmlFor="basic-readonly"
                 className="text-xs font-medium font-mono text-muted-foreground"
-              >{/* Entrada solo lectura */}</label>
+              >
+                {/* Entrada solo lectura */}
+              </label>
               <Input
                 id="basic-readonly"
                 type="text"
@@ -174,7 +188,9 @@ export default function BasicFormsPage() {
               <label
                 htmlFor="basic-textarea"
                 className="text-xs font-medium font-mono text-muted-foreground"
-              >{/* Area de texto multilinea */}</label>
+              >
+                {/* Area de texto multilinea */}
+              </label>
               <Textarea
                 id="basic-textarea"
                 placeholder="escribe un mensaje largo aqui..."
@@ -195,7 +211,9 @@ export default function BasicFormsPage() {
           </CardHeader>
           <CardContent className="grid sm:grid-cols-2 gap-8">
             <div className="space-y-4">
-              <label className="text-xs font-medium font-mono text-muted-foreground">{/* Checkboxes - seleccion multiple */}</label>
+              <label className="text-xs font-medium font-mono text-muted-foreground">
+                {/* Checkboxes - seleccion multiple */}
+              </label>
               <div className="flex flex-col gap-3">
                 <label className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/30 transition-colors cursor-pointer font-mono text-xs">
                   <input
@@ -231,7 +249,9 @@ export default function BasicFormsPage() {
             </div>
 
             <div className="space-y-4">
-              <label className="text-xs font-medium font-mono text-muted-foreground">{/* Radio buttons - seleccion unica */}</label>
+              <label className="text-xs font-medium font-mono text-muted-foreground">
+                {/* Radio buttons - seleccion unica */}
+              </label>
               <div className="flex flex-col gap-3">
                 <label className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/30 transition-colors cursor-pointer font-mono text-xs">
                   <input
@@ -285,7 +305,9 @@ export default function BasicFormsPage() {
                 <label
                   htmlFor="form-email"
                   className="text-xs font-medium font-mono text-muted-foreground"
-                >{/* Correo electronico * */}</label>
+                >
+                  {/* Correo electronico * */}
+                </label>
                 <Input
                   id="form-email"
                   name="email"
@@ -316,7 +338,9 @@ export default function BasicFormsPage() {
                 <label
                   htmlFor="form-select"
                   className="text-xs font-medium font-mono text-muted-foreground"
-                >{/* Selector de opciones * */}</label>
+                >
+                  {/* Selector de opciones * */}
+                </label>
                 <Select required name="select">
                   <SelectTrigger
                     id="form-select"

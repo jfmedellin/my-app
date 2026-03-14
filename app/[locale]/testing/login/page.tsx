@@ -53,13 +53,17 @@ export default function LoginTestingPage() {
         <h1 className="text-2xl font-bold tracking-tight font-mono">
           <span className="text-primary">&gt;</span> Login de Pruebas
         </h1>
-        <p className="text-muted-foreground mt-1 font-mono text-sm">{/* Simulación de inicio de sesión para testing */}</p>
+        <p className="text-muted-foreground mt-1 font-mono text-sm">
+          {/* Simulación de inicio de sesión para testing */}
+        </p>
       </div>
 
       {/* Demo Data Indicator */}
       <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-900/50">
         <AlertTriangle className="size-4 text-amber-600 dark:text-amber-500" />
-        <p className="text-xs font-mono text-amber-800 dark:text-amber-400">{/* Credenciales de prueba - Demo Only */}</p>
+        <p className="text-xs font-mono text-amber-800 dark:text-amber-400">
+          {/* Credenciales de prueba - Demo Only */}
+        </p>
       </div>
 
       <Card className="border-dashed">
@@ -89,7 +93,9 @@ export default function LoginTestingPage() {
               <label
                 htmlFor="username"
                 className="text-xs font-medium font-mono text-muted-foreground"
-              >{/* Ingresa tu usuario */}</label>
+              >
+                {/* Ingresa tu usuario */}
+              </label>
               <div className="relative">
                 <Input
                   id="username"
@@ -117,7 +123,9 @@ export default function LoginTestingPage() {
               <label
                 htmlFor="password"
                 className="text-xs font-medium font-mono text-muted-foreground"
-              >{/* Ingresa tu contraseña */}</label>
+              >
+                {/* Ingresa tu contraseña */}
+              </label>
               <div className="relative">
                 <Input
                   id="password"

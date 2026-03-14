@@ -49,7 +49,9 @@ export default function UIComponentsPage() {
         <h1 className="text-2xl font-bold font-mono">
           <span className="text-primary">&gt;</span> Componentes UI Flotantes
         </h1>
-        <p className="text-muted-foreground mt-1 font-mono text-sm">{/* Elementos que se superponen al flujo normal: modals, tooltips, toasts */}</p>
+        <p className="text-muted-foreground mt-1 font-mono text-sm">
+          {/* Elementos que se superponen al flujo normal: modals, tooltips, toasts */}
+        </p>
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2">
@@ -60,7 +62,9 @@ export default function UIComponentsPage() {
               <MessageSquare className="size-4 text-muted-foreground/70" />
               <CardTitle className="text-sm font-medium font-mono">mostrar_modal()</CardTitle>
             </div>
-            <CardDescription className="font-mono text-xs">{/* Diálogo que bloquea la interacción con el resto de la página */}</CardDescription>
+            <CardDescription className="font-mono text-xs">
+              {/* Diálogo que bloquea la interacción con el resto de la página */}
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <Button
@@ -81,7 +85,9 @@ export default function UIComponentsPage() {
               <Bell className="size-4 text-muted-foreground/70" />
               <CardTitle className="text-sm font-medium font-mono">notificar_usuario()</CardTitle>
             </div>
-            <CardDescription className="font-mono text-xs">{/* Alertas flotantes temporales */}</CardDescription>
+            <CardDescription className="font-mono text-xs">
+              {/* Alertas flotantes temporales */}
+            </CardDescription>
           </CardHeader>
           <CardContent className="flex gap-4">
             <Button
@@ -114,7 +120,9 @@ export default function UIComponentsPage() {
                 mostrar_informacion_emergente()
               </CardTitle>
             </div>
-            <CardDescription className="font-mono text-xs">{/* Elementos que revelan información al pasar el ratón */}</CardDescription>
+            <CardDescription className="font-mono text-xs">
+              {/* Elementos que revelan información al pasar el ratón */}
+            </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="flex items-center gap-2">
@@ -127,7 +135,9 @@ export default function UIComponentsPage() {
                 <div
                   className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-foreground text-background text-xs rounded font-mono opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap z-50"
                   data-testid="tooltip-content"
-                >{/* tooltip: texto oculto revelado */}</div>
+                >
+                  {/* tooltip: texto oculto revelado */}
+                </div>
               </div>
             </div>
 
@@ -147,7 +157,9 @@ export default function UIComponentsPage() {
                 <h4 className="font-semibold font-mono mb-1 text-sm">
                   <span className="text-primary">&gt;</span> menu_desplegable()
                 </h4>
-                <p className="text-xs text-muted-foreground font-mono">{/* Contenido visible solo durante hover sobre el botón o este menú */}</p>
+                <p className="text-xs text-muted-foreground font-mono">
+                  {/* Contenido visible solo durante hover sobre el botón o este menú */}
+                </p>
               </div>
             </div>
           </CardContent>
@@ -162,7 +174,9 @@ export default function UIComponentsPage() {
                 capturar_click_derecho()
               </CardTitle>
             </div>
-            <CardDescription className="font-mono text-xs">{/* Área diseñada para capturar el evento onContextMenu */}</CardDescription>
+            <CardDescription className="font-mono text-xs">
+              {/* Área diseñada para capturar el evento onContextMenu */}
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <div
@@ -173,7 +187,9 @@ export default function UIComponentsPage() {
               }}
               data-testid="context-menu-zone"
             >
-              <span className="text-xs font-mono text-muted-foreground select-none pointer-events-none">{/* haz_click_derecho_aqui */}</span>
+              <span className="text-xs font-mono text-muted-foreground select-none pointer-events-none">
+                {/* haz_click_derecho_aqui */}
+              </span>
             </div>
           </CardContent>
         </Card>
@@ -205,7 +221,9 @@ export default function UIComponentsPage() {
                 <X className="h-4 w-4" />
               </Button>
             </div>
-            <p className="text-muted-foreground mb-6 font-mono text-sm" data-testid="modal-content">{/* Por favor acepta los términos de servicio antes de continuar */}</p>
+            <p className="text-muted-foreground mb-6 font-mono text-sm" data-testid="modal-content">
+              {/* Por favor acepta los términos de servicio antes de continuar */}
+            </p>
             <div className="flex justify-end gap-2">
               <Button
                 variant="outline"

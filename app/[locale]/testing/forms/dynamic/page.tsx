@@ -61,13 +61,17 @@ export default function DynamicFormsPage() {
         <h1 className="text-2xl font-bold font-mono">
           <span className="text-primary">&gt;</span> Elementos Complejos
         </h1>
-        <p className="text-muted-foreground mt-1 font-mono text-sm">{/* Datepickers, autocompletado, file uploads, sliders */}</p>
+        <p className="text-muted-foreground mt-1 font-mono text-sm">
+          {/* Datepickers, autocompletado, file uploads, sliders */}
+        </p>
       </div>
 
       {/* Demo Data Banner */}
       <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-900/50">
         <AlertTriangle className="size-4 text-amber-600 dark:text-amber-500" />
-        <p className="text-xs font-mono text-amber-800 dark:text-amber-400">{/* Entorno de pruebas - Demo Only */}</p>
+        <p className="text-xs font-mono text-amber-800 dark:text-amber-400">
+          {/* Entorno de pruebas - Demo Only */}
+        </p>
       </div>
 
       <div className="grid gap-6">
@@ -78,7 +82,9 @@ export default function DynamicFormsPage() {
               <Calendar className="size-4 text-muted-foreground/70" />
               <CardTitle className="text-sm font-medium font-mono">selector_fecha_hora()</CardTitle>
             </div>
-            <CardDescription className="font-mono text-xs">{/* Selectores nativos para testing de calendarios */}</CardDescription>
+            <CardDescription className="font-mono text-xs">
+              {/* Selectores nativos para testing de calendarios */}
+            </CardDescription>
           </CardHeader>
           <CardContent className="grid sm:grid-cols-2 gap-8">
             <div className="space-y-4">
@@ -86,7 +92,9 @@ export default function DynamicFormsPage() {
                 <Label
                   htmlFor="date-picker"
                   className="text-xs font-medium font-mono text-muted-foreground"
-                >{/* fecha (nativo) */}</Label>
+                >
+                  {/* fecha (nativo) */}
+                </Label>
                 <div className="relative">
                   <Database className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/70 pointer-events-none" />
                   <Input
@@ -101,7 +109,9 @@ export default function DynamicFormsPage() {
                 <Label
                   htmlFor="time-picker"
                   className="text-xs font-medium font-mono text-muted-foreground"
-                >{/* hora (nativo) */}</Label>
+                >
+                  {/* hora (nativo) */}
+                </Label>
                 <div className="relative">
                   <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/70 pointer-events-none" />
                   <Input
@@ -119,7 +129,9 @@ export default function DynamicFormsPage() {
                 <Label
                   htmlFor="datetime-picker"
                   className="text-xs font-medium font-mono text-muted-foreground"
-                >{/* fecha y hora locales */}</Label>
+                >
+                  {/* fecha y hora locales */}
+                </Label>
                 <div className="relative">
                   <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/70 pointer-events-none" />
                   <Input
@@ -134,7 +146,9 @@ export default function DynamicFormsPage() {
                 <Label
                   htmlFor="month-picker"
                   className="text-xs font-medium font-mono text-muted-foreground"
-                >{/* mes (nativo) */}</Label>
+                >
+                  {/* mes (nativo) */}
+                </Label>
                 <div className="relative">
                   <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/70 pointer-events-none" />
                   <Input
@@ -156,14 +170,18 @@ export default function DynamicFormsPage() {
               <List className="size-4 text-muted-foreground/70" />
               <CardTitle className="text-sm font-medium font-mono">autocompletado()</CardTitle>
             </div>
-            <CardDescription className="font-mono text-xs">{/* Input que sugiere opciones mientras escribes */}</CardDescription>
+            <CardDescription className="font-mono text-xs">
+              {/* Input que sugiere opciones mientras escribes */}
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid gap-2">
               <Label
                 htmlFor="browser-choice"
                 className="text-xs font-medium font-mono text-muted-foreground"
-              >{/* navegador favorito */}</Label>
+              >
+                {/* navegador favorito */}
+              </Label>
               <div className="relative">
                 <List className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/70 pointer-events-none" />
                 <Input
@@ -197,14 +215,18 @@ export default function DynamicFormsPage() {
               <UploadCloud className="size-4 text-muted-foreground/70" />
               <CardTitle className="text-sm font-medium font-mono">archivo_upload()</CardTitle>
             </div>
-            <CardDescription className="font-mono text-xs">{/* Pruebas de file upload clásico y drag & drop */}</CardDescription>
+            <CardDescription className="font-mono text-xs">
+              {/* Pruebas de file upload clásico y drag & drop */}
+            </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="grid gap-2">
               <Label
                 htmlFor="file-classic"
                 className="text-xs font-medium font-mono text-muted-foreground"
-              >{/* subida clásica (input file) */}</Label>
+              >
+                {/* subida clásica (input file) */}
+              </Label>
               <div className="relative">
                 <HardDrive className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/70 pointer-events-none" />
                 <Input
@@ -219,7 +241,9 @@ export default function DynamicFormsPage() {
             <Separator className="my-2" />
 
             <div className="grid gap-3">
-              <Label className="text-xs font-medium font-mono text-muted-foreground">{/* zona drag & drop */}</Label>
+              <Label className="text-xs font-medium font-mono text-muted-foreground">
+                {/* zona drag & drop */}
+              </Label>
               <div
                 className={`relative border-2 border-dashed rounded-lg p-10 flex flex-col items-center justify-center text-center transition-colors ${
                   dragActive ? 'border-primary bg-primary/5' : 'border-border bg-muted/30'
@@ -252,7 +276,9 @@ export default function DynamicFormsPage() {
                   <>
                     <UploadCloud className="w-10 h-10 text-muted-foreground mb-2" />
                     <p className="text-sm font-medium font-mono">arrastra_archivo_aqui</p>
-                    <p className="text-xs text-muted-foreground font-mono mt-0.5">{/* cualquier extensión mock */}</p>
+                    <p className="text-xs text-muted-foreground font-mono mt-0.5">
+                      {/* cualquier extensión mock */}
+                    </p>
                   </>
                 )}
               </div>
@@ -267,14 +293,18 @@ export default function DynamicFormsPage() {
               <BarChart3 className="size-4 text-muted-foreground/70" />
               <CardTitle className="text-sm font-medium font-mono">selector_rango()</CardTitle>
             </div>
-            <CardDescription className="font-mono text-xs">{/* Input de tipo rango para selección continua */}</CardDescription>
+            <CardDescription className="font-mono text-xs">
+              {/* Input de tipo rango para selección continua */}
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid gap-3">
               <Label
                 htmlFor="volume-slider"
                 className="text-xs font-medium font-mono text-muted-foreground"
-              >{/* volumen (0 - 100) */}</Label>
+              >
+                {/* volumen (0 - 100) */}
+              </Label>
               <div className="flex items-center gap-4 py-2">
                 <input
                   id="volume-slider"
@@ -308,7 +338,9 @@ export default function DynamicFormsPage() {
             <Terminal className="size-4 text-muted-foreground/70" />
             <CardTitle className="text-sm font-medium font-mono">notas_testing()</CardTitle>
           </div>
-          <CardDescription className="font-mono text-xs">{/* Consideraciones para automatización de pruebas */}</CardDescription>
+          <CardDescription className="font-mono text-xs">
+            {/* Consideraciones para automatización de pruebas */}
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <ul className="space-y-1.5 text-xs font-mono text-muted-foreground">

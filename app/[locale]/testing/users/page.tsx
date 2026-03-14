@@ -70,7 +70,9 @@ export default function UsersPage() {
       {/* Demo Data Indicator */}
       <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-900/50">
         <AlertTriangle className="size-4 text-amber-600 dark:text-amber-500" />
-        <p className="text-xs font-mono text-amber-800 dark:text-amber-400">{/* Datos de prueba - Demo Data Only */}</p>
+        <p className="text-xs font-mono text-amber-800 dark:text-amber-400">
+          {/* Datos de prueba - Demo Data Only */}
+        </p>
       </div>
 
       {users.length > 0 && <UsersStats users={users} />}
