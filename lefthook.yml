@@ -1,0 +1,9 @@
+pre-commit:
+  parallel: true
+  jobs:
+    - name: ESLint
+      run: npx eslint {staged_files}
+      glob: '*.{js,ts,jsx,tsx}'
+    - name: Prettier
+      run: npx prettier --write {staged_files}
+      glob: '*.{js,ts,jsx,tsx,json,css,md,yml,yaml}'

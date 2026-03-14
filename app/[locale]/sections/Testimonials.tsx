@@ -68,7 +68,7 @@ export default function Testimonials({ t }: TestimonialsProps) {
                   </div>
                   <CardContent className="p-8 pt-6 relative">
                     <p className="text-muted-foreground mb-6 leading-relaxed font-medium">
-                      "{testimonial.quote}"
+                      &quot;{testimonial.quote}&quot;
                     </p>
                     <div className="flex items-center gap-4">
                       <div className="h-14 w-14 rounded-xl overflow-hidden bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
