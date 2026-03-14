@@ -1,131 +1,105 @@
-"use client"
+'use client';
 
-import useSWR from "swr"
-import { useState, useTransition } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { UsersModal } from "@/components/users/UsersModal"
-import { UserPlus, Trash2, Loader2 } from "lucide-react"
-import { deleteUser, getUsers, User } from "@/lib/actions/users"
+import useSWR from 'swr';
+import { useState, useTransition } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { UsersModal } from '@/components/users/UsersModal';
+import { UserCard, UsersEmpty } from '@/components/users/UserCard';
+import { UsersHeader, UsersStats } from '@/components/users/UsersHeader';
+import { Loader2, Database, AlertTriangle } from 'lucide-react';
+import { deleteUser, getUsers, User } from '@/lib/actions/users';
+import { toast } from 'sonner';
 
 export default function UsersPage() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [selectedUser, setSelectedUser] = useState<User | null>(null)
-  const [isPending, startTransition] = useTransition()
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
+  const [isPending, startTransition] = useTransition();
 
-  const { data: users = [], isLoading, mutate } = useSWR<User[]>("users", getUsers, {
+  const {
+    data: users = [],
+    isLoading,
+    mutate,
+  } = useSWR<User[]>('users', getUsers, {
     revalidateOnFocus: false,
-  })
+  });
 
   const handleOpenCreate = () => {
-    setSelectedUser(null)
-    setIsModalOpen(true)
-  }
+    setSelectedUser(null);
+    setIsModalOpen(true);
+  };
 
   const handleOpenEdit = (user: User) => {
-    setSelectedUser(user)
-    setIsModalOpen(true)
-  }
+    setSelectedUser(user);
+    setIsModalOpen(true);
+  };
 
   const handleDelete = (id: number) => {
-    if (!confirm("¿Estás seguro de eliminar este usuario?")) return
-    
     startTransition(async () => {
       try {
-        await deleteUser(id)
-        mutate(
-          (currentUsers) => currentUsers?.filter((u) => u.id !== id) ?? [],
-          false
-        )
+        await deleteUser(id);
+        mutate(currentUsers => currentUsers?.filter(u => u.id !== id) ?? [], false);
+        toast.success('Usuario eliminado correctamente');
       } catch (error) {
-        console.error("Error deleting user:", error)
-        alert("Error al eliminar usuario")
+        console.error('Error deleting user:', error);
+        toast.error('Error al eliminar usuario');
       }
-    })
-  }
+    });
+  };
 
   const handleSuccess = () => {
-    mutate()
-  }
+    mutate();
+    toast.success(selectedUser ? 'Usuario actualizado' : 'Usuario creado');
+  };
 
   if (isLoading) {
     return (
-      <div className="max-w-4xl mx-auto space-y-8">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">Gestión de Usuarios</h1>
-          <p className="text-muted-foreground mt-2">
-            CRUD de usuarios con Supabase.
-          </p>
-        </div>
-        <div className="flex items-center justify-center py-12">
+      <div className="max-w-3xl mx-auto space-y-8">
+        <UsersHeader userCount={0} onCreateUser={handleOpenCreate} />
+        <div className="flex items-center justify-center py-20">
           <Loader2 className="size-8 animate-spin text-muted-foreground" />
         </div>
       </div>
-    )
+    );
   }
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">Gestión de Usuarios</h1>
-        <p className="text-muted-foreground mt-2">
-          CRUD de usuarios con Supabase.
-        </p>
+    <div className="max-w-3xl mx-auto space-y-6">
+      <UsersHeader userCount={users.length} onCreateUser={handleOpenCreate} />
+
+      {/* Demo Data Indicator */}
+      <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-900/50">
+        <AlertTriangle className="size-4 text-amber-600 dark:text-amber-500" />
+        <p className="text-xs font-mono text-amber-800 dark:text-amber-400">{/* Datos de prueba - Demo Data Only */}</p>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <UserPlus className="size-5" />
-            Usuarios
-          </CardTitle>
-          <CardDescription>
-            Lista de usuarios desde Supabase. Haz clic en &quot;Editar&quot; para modificar.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <Button onClick={handleOpenCreate}>
-            <UserPlus className="size-4" />
-            Nuevo Usuario
-          </Button>
+      {users.length > 0 && <UsersStats users={users} />}
 
+      <Card className="border-dashed">
+        <CardHeader className="pb-3">
+          <div className="flex items-center justify-between">
+            <CardTitle className="text-sm font-medium font-mono flex items-center gap-2">
+              <Database className="size-4" />
+              Tabla: users
+            </CardTitle>
+            <span className="text-xs font-mono text-muted-foreground">{users.length} rows</span>
+          </div>
+        </CardHeader>
+        <CardContent className="p-4 pt-0">
           {users.length === 0 ? (
-            <p className="text-muted-foreground text-center py-8">
-              No hay usuarios. Crea el primero.
-            </p>
+            <UsersEmpty />
           ) : (
-            <div className="space-y-2">
-              {users.map((user) => (
-                <div
+            <div className="space-y-1.5">
+              {users.map(user => (
+                <UserCard
                   key={user.id}
-                  className="flex items-center justify-between p-3 border rounded-lg"
-                >
-                  <div>
-                    <p className="font-medium">{user.name || "Sin nombre"}</p>
-                    <p className="text-sm text-muted-foreground">{user.email}</p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs px-2 py-1 bg-secondary rounded">
-                      {user.role}
-                    </span>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => handleOpenEdit(user)}
-                    >
-                      Editar
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="icon-sm"
-                      onClick={() => handleDelete(user.id)}
-                      disabled={isPending}
-                      className="text-red-500 hover:text-red-600 hover:bg-red-50"
-                    >
-                      {isPending ? <Loader2 className="size-4 animate-spin" /> : <Trash2 className="size-4" />}
-                    </Button>
-                  </div>
-                </div>
+                  name={user.name}
+                  email={user.email}
+                  role={user.role}
+                  onEdit={() => handleOpenEdit(user)}
+                  onDelete={() => handleDelete(user.id)}
+                  isDeleting={isPending}
+                />
               ))}
             </div>
           )}
@@ -139,5 +113,5 @@ export default function UsersPage() {
         onSuccess={handleSuccess}
       />
     </div>
-  )
+  );
 }
