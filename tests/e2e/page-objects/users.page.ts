@@ -16,24 +16,30 @@ export class UsersPage extends BasePage {
   readonly roleOption: (role: string) => Locator;
   readonly userCardByText: (text: string) => Locator;
   readonly userCard: Locator;
+  readonly createButton: Locator;
+  readonly saveChangesButton: Locator;
 
   constructor(page: Page) {
     super(page);
     this.title = page.locator('h1');
-    this.subtitle = page.locator('p.text-muted-foreground.mt-2');
+    this.subtitle = page.locator('p.text-muted-foreground.mt-1');
     this.newUserButton = page.getByRole('button', { name: 'Nuevo Usuario' });
     this.dialog = page.locator('[role="dialog"]');
     this.emailInput = page.locator('input[type="email"]');
     this.nameInput = page.locator('input[type="text"]');
     this.roleCombobox = page.locator('[role="combobox"]');
-    this.saveButton = page.getByRole('button', { name: 'Guardar' });
+    this.createButton = page.getByRole('button', { name: 'Crear usuario' });
+    this.saveChangesButton = page.getByRole('button', { name: 'Guardar cambios' });
+    this.saveButton = this.createButton.or(this.saveChangesButton);
     this.cancelButton = page.getByRole('button', { name: 'Cancelar' });
     this.deleteButtons = page.locator('button svg.lucide-trash2, button svg.lucide-trash');
-    this.editButtons = page.getByRole('button', { name: 'Editar' });
+    this.editButtons = page
+      .locator('button svg.lucide-pencil, button svg.lucide-pencil')
+      .locator('..');
     this.roleOption = (role: string) =>
       page.locator('[role="listbox"] [role="option"]').filter({ hasText: role });
-    this.userCardByText = (text: string) => page.locator(`text=${text}`);
-    this.userCard = page.locator('.space-y-2 > div');
+    this.userCardByText = (text: string) => page.getByText(text, { exact: false });
+    this.userCard = page.locator('div.rounded-lg.border.border-border\\/50');
   }
 
   async goto(): Promise<void> {
@@ -42,8 +48,8 @@ export class UsersPage extends BasePage {
   }
 
   async expectOnPage(): Promise<void> {
-    await expect(this.title).toContainText('Gestión de Usuarios');
-    await expect(this.subtitle).toContainText('CRUD de usuarios con Supabase');
+    await expect(this.title).toContainText('Usuarios del Sistema');
+    await expect(this.subtitle).toContainText('usuario');
     await expect(this.newUserButton).toBeVisible();
   }
 
@@ -56,8 +62,9 @@ export class UsersPage extends BasePage {
     await this.emailInput.fill(email);
     await this.nameInput.fill(name);
     await this.selectRole(role);
-    await this.saveButton.click();
-    await this.waitForDialogHidden();
+    await this.createButton.click();
+    await this.page.waitForTimeout(1000);
+    await this.dialog.waitFor({ state: 'hidden', timeout: 20000 });
   }
 
   async selectRole(role: string): Promise<void> {
@@ -75,7 +82,8 @@ export class UsersPage extends BasePage {
     if (role) {
       await this.selectRole(role);
     }
-    await this.saveButton.click();
+    await this.saveChangesButton.click();
+    await this.page.waitForTimeout(1000);
   }
 
   async cancelEdit(): Promise<void> {

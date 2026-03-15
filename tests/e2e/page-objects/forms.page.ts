@@ -121,7 +121,7 @@ export class FormsPage extends BasePage {
 
   async expectReadonlyInput(): Promise<void> {
     await expect(this.readonlyInput).toHaveAttribute('readonly', '');
-    await expect(this.readonlyInput).toHaveValue('Contenido fijo');
+    await expect(this.readonlyInput).toHaveValue('contenido fijo');
   }
 
   async expectCheckOp2Checked(): Promise<void> {

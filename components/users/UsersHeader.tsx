@@ -1,4 +1,4 @@
-import { UserPlus, Users, Search, Database, Code2, Terminal } from 'lucide-react';
+import { Users, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface UsersHeaderProps {
@@ -11,23 +11,21 @@ export function UsersHeader({ userCount, onCreateUser }: UsersHeaderProps) {
     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
       <div>
         <div className="flex items-center gap-2 mb-1">
-          <Database className="size-4 text-muted-foreground/70" />
+          <Users className="size-4 text-primary" />
           <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-            Usuarios
+            Gestión de Usuarios
           </span>
         </div>
-        <h1 className="text-2xl font-bold tracking-tight font-mono">
-          <span className="text-primary">&gt;</span> Gestor de Usuarios
-        </h1>
-        <p className="text-muted-foreground mt-1 font-mono text-sm">
+        <h1 className="text-2xl font-semibold tracking-tight">Usuarios del Sistema</h1>
+        <p className="text-muted-foreground mt-1 text-sm">
           {userCount === 0
-            ? '// Sin registros en la base de datos'
-            : `// ${userCount} usuario${userCount === 1 ? '' : 's'} cargado${userCount === 1 ? '' : 's'}`}
+            ? 'No hay usuarios registrados'
+            : `${userCount} usuario${userCount === 1 ? '' : 's'} registrado${userCount === 1 ? '' : 's'}`}
         </p>
       </div>
-      <Button onClick={onCreateUser} className="gap-2 font-mono text-sm">
-        <Terminal className="size-4" />
-        nuevo_usuario()
+      <Button onClick={onCreateUser} className="gap-2">
+        <Plus className="size-4" />
+        Nuevo Usuario
       </Button>
     </div>
   );
@@ -42,25 +40,17 @@ export function UsersStats({ users }: { users: { role: string }[] }) {
 
   return (
     <div className="grid grid-cols-3 gap-3">
-      <div className="p-4 rounded-lg border border-primary/30 bg-primary/5 shadow-[inset_0_-1px_0_0_var(--primary)]">
-        <p className="text-2xl font-bold font-mono">{String(stats.admin).padStart(2, '0')}</p>
-        <p className="text-xs text-muted-foreground font-medium font-mono uppercase tracking-wider">
-          Admin
-        </p>
+      <div className="p-3 rounded-md border border-border/60 bg-card">
+        <p className="text-xl font-semibold text-primary">{stats.admin}</p>
+        <p className="text-xs text-muted-foreground mt-0.5">Administradores</p>
       </div>
-      <div className="p-4 rounded-lg border border-amber-300/30 bg-amber-50/50 dark:border-amber-700/30 dark:bg-amber-950/30">
-        <p className="text-2xl font-bold font-mono text-amber-700 dark:text-amber-400">
-          {String(stats.editor).padStart(2, '0')}
-        </p>
-        <p className="text-xs text-muted-foreground font-medium font-mono uppercase tracking-wider">
-          Editores
-        </p>
+      <div className="p-3 rounded-md border border-border/60 bg-card">
+        <p className="text-xl font-semibold text-amber-600 dark:text-amber-400">{stats.editor}</p>
+        <p className="text-xs text-muted-foreground mt-0.5">Editores</p>
       </div>
-      <div className="p-4 rounded-lg border bg-muted/30">
-        <p className="text-2xl font-bold font-mono">{String(stats.user).padStart(2, '0')}</p>
-        <p className="text-xs text-muted-foreground font-medium font-mono uppercase tracking-wider">
-          Usuarios
-        </p>
+      <div className="p-3 rounded-md border border-border/60 bg-card">
+        <p className="text-xl font-semibold">{stats.user}</p>
+        <p className="text-xs text-muted-foreground mt-0.5">Usuarios</p>
       </div>
     </div>
   );

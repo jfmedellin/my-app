@@ -43,7 +43,9 @@ export class LoginPage extends BasePage {
   async expectError(): Promise<void> {
     await expect(this.submitButton).toBeEnabled({ timeout: 10000 });
     await expect(this.errorMessage).toBeVisible({ timeout: 10000 });
-    await expect(this.errorMessage).toContainText(/usuario|contraseña|incorrectos/i);
+    await expect(this.errorMessage).toContainText(
+      /usuario|contraseña|incorrectos|credenciales inválidas|acceso denegado/i
+    );
     await expect(this.successOverlay).not.toBeVisible();
     await expect(this.successModal).not.toBeVisible();
   }

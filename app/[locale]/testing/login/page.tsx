@@ -54,7 +54,7 @@ export default function LoginTestingPage() {
           <span className="text-primary">&gt;</span> Login de Pruebas
         </h1>
         <p className="text-muted-foreground mt-1 font-mono text-sm">
-          {/* Simulación de inicio de sesión para testing */}
+          Simulación de inicio de sesión para testing
         </p>
       </div>
 
@@ -62,7 +62,7 @@ export default function LoginTestingPage() {
       <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-900/50">
         <AlertTriangle className="size-4 text-amber-600 dark:text-amber-500" />
         <p className="text-xs font-mono text-amber-800 dark:text-amber-400">
-          {/* Credenciales de prueba - Demo Only */}
+          Credenciales de prueba - Demo Only
         </p>
       </div>
 
@@ -80,7 +80,7 @@ export default function LoginTestingPage() {
               role="alert"
               aria-live="polite"
               className={`p-3 bg-destructive/10 border border-destructive/20 text-destructive rounded-lg text-xs font-mono flex items-start gap-2 transition-all duration-200 ${
-                error ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 hidden'
+                error ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'
               }`}
               data-testid="login-error-message"
             >
@@ -94,7 +94,7 @@ export default function LoginTestingPage() {
                 htmlFor="username"
                 className="text-xs font-medium font-mono text-muted-foreground"
               >
-                {/* Ingresa tu usuario */}
+                Ingresa tu usuario
               </label>
               <div className="relative">
                 <Input
@@ -124,7 +124,7 @@ export default function LoginTestingPage() {
                 htmlFor="password"
                 className="text-xs font-medium font-mono text-muted-foreground"
               >
-                {/* Ingresa tu contraseña */}
+                Ingresa tu contraseña
               </label>
               <div className="relative">
                 <Input
@@ -199,9 +199,7 @@ export default function LoginTestingPage() {
                 <h2 id="success-title" className="text-xl font-bold font-mono">
                   <span className="text-green-500">&gt;</span> Acceso Concedido
                 </h2>
-                <p className="text-muted-foreground text-xs font-mono">
-                  {/* Autenticación exitosa */}
-                </p>
+                <p className="text-muted-foreground text-xs font-mono">Autenticación exitosa</p>
               </div>
               <Button
                 variant="outline"

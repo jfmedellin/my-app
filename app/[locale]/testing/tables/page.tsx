@@ -11,7 +11,6 @@ import {
   ChevronLeft,
   ChevronRight,
   Database,
-  Terminal,
   AlertTriangle,
 } from 'lucide-react';
 
@@ -145,7 +144,7 @@ export default function TablesPage() {
             <span className="text-primary">&gt;</span> Directorio de Usuarios
           </h1>
           <p className="text-muted-foreground mt-1 font-mono text-sm">
-            {/* {filteredData.length} registros encontrados en la base de datos */}
+            {filteredData.length} registros encontrados en la base de datos
           </p>
         </div>
       </div>
@@ -154,7 +153,7 @@ export default function TablesPage() {
       <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-900/50">
         <AlertTriangle className="size-4 text-amber-600 dark:text-amber-500" />
         <p className="text-xs font-mono text-amber-800 dark:text-amber-400">
-          {/* Datos de prueba - Demo Data Only */}
+          Datos de prueba - Demo Data Only
         </p>
       </div>
 
@@ -217,7 +216,7 @@ export default function TablesPage() {
               </thead>
               <tbody>
                 {paginatedData.length > 0 ? (
-                  paginatedData.map((row, index) => {
+                  paginatedData.map((row) => {
                     const role = roleConfig[row.role as keyof typeof roleConfig] || roleConfig.user;
                     const status =
                       statusConfig[row.status as keyof typeof statusConfig] ||
@@ -264,7 +263,7 @@ export default function TablesPage() {
                       colSpan={5}
                       className="px-4 py-8 text-center text-muted-foreground font-mono text-sm"
                     >
-                      {/* Sin resultados para &quot;{search}&quot; */}
+                      Sin resultados para &quot;{search}&quot;
                     </td>
                   </tr>
                 )}
@@ -275,7 +274,7 @@ export default function TablesPage() {
           {/* Paginación */}
           <div className="flex items-center justify-between pt-2">
             <div className="text-sm text-muted-foreground font-mono text-xs">
-              {/* página {currentPage} de {totalPages || 1} */}
+              página {currentPage} de {totalPages || 1}
             </div>
             <div className="flex items-center gap-2">
               <Button

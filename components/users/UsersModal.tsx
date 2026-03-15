@@ -5,6 +5,7 @@ import { User, Shield, ShieldAlert, ShieldCheck } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import {
   Select,
   SelectContent,
@@ -20,7 +21,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { cn } from '@/lib/utils';
 import { createUser, updateUser } from '@/lib/actions/users';
 
 interface UserFormData {
@@ -38,8 +38,8 @@ interface UsersModalProps {
 }
 
 const roleOptions = [
-  { value: 'user', label: 'Usuario', icon: Shield, description: 'Acceso básico' },
-  { value: 'editor', label: 'Editor', icon: ShieldCheck, description: ' Puede editar contenido' },
+  { value: 'user', label: 'Usuario', icon: Shield, description: 'Acceso básico al sistema' },
+  { value: 'editor', label: 'Editor', icon: ShieldCheck, description: 'Puede editar contenido' },
   { value: 'admin', label: 'Administrador', icon: ShieldAlert, description: 'Acceso completo' },
 ];
 
@@ -97,46 +97,43 @@ export function UsersModal({ open, onOpenChange, user, onSuccess }: UsersModalPr
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[480px]">
+      <DialogContent className="sm:max-w-[450px]">
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
+          <DialogTitle className="flex items-center gap-2">
+            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10">
               <User className="size-4 text-primary" />
             </div>
             {isEditing ? 'Editar usuario' : 'Crear usuario'}
           </DialogTitle>
           <DialogDescription>
             {isEditing
-              ? 'Modifica los datos del usuario. Los cambios se guardarán al hacer clic en Guardar.'
-              : 'Completa los datos para crear un nuevo usuario en el sistema.'}
+              ? 'Modifica los datos del usuario existente.'
+              : 'Completa los datos para crear un nuevo usuario.'}
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-5">
           {error && (
-            <div className="p-3 text-sm text-destructive bg-destructive/10 rounded-lg border border-destructive/20">
+            <div className="p-3 text-sm text-destructive bg-destructive/10 rounded-md border border-destructive/20">
               {error}
             </div>
           )}
-          <div className="grid gap-4">
-            <div className="grid gap-2">
-              <label htmlFor="email" className="text-sm font-medium leading-none">
-                Email <span className="text-destructive">*</span>
-              </label>
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="email">
+                Correo electrónico <span className="text-destructive">*</span>
+              </Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="correo@ejemplo.com"
+                placeholder="usuario@ejemplo.com"
                 value={formData.email}
                 onChange={e => setFormData(prev => ({ ...prev, email: e.target.value }))}
                 required
                 disabled={isLoading}
-                className="h-10"
               />
             </div>
-            <div className="grid gap-2">
-              <label htmlFor="name" className="text-sm font-medium leading-none">
-                Nombre completo
-              </label>
+            <div className="space-y-2">
+              <Label htmlFor="name">Nombre completo</Label>
               <Input
                 id="name"
                 type="text"
@@ -144,19 +141,16 @@ export function UsersModal({ open, onOpenChange, user, onSuccess }: UsersModalPr
                 value={formData.name}
                 onChange={e => setFormData(prev => ({ ...prev, name: e.target.value }))}
                 disabled={isLoading}
-                className="h-10"
               />
             </div>
-            <div className="grid gap-2">
-              <label htmlFor="role" className="text-sm font-medium leading-none">
-                Rol del usuario
-              </label>
+            <div className="space-y-2">
+              <Label htmlFor="role">Rol del usuario</Label>
               <Select
                 value={formData.role}
                 onValueChange={value => setFormData(prev => ({ ...prev, role: value }))}
                 disabled={isLoading}
               >
-                <SelectTrigger id="role" className="h-10">
+                <SelectTrigger id="role">
                   <SelectValue placeholder="Seleccionar rol" />
                 </SelectTrigger>
                 <SelectContent>
@@ -167,28 +161,27 @@ export function UsersModal({ open, onOpenChange, user, onSuccess }: UsersModalPr
                         <div className="flex items-center gap-2">
                           <Icon className="size-4" />
                           <span>{role.label}</span>
-                          <span className="text-muted-foreground text-xs ml-auto">
-                            {role.description}
-                          </span>
                         </div>
                       </SelectItem>
                     );
                   })}
                 </SelectContent>
               </Select>
+              <p className="text-xs text-muted-foreground">
+                {roleOptions.find(r => r.value === formData.role)?.description}
+              </p>
             </div>
           </div>
-          <DialogFooter className="gap-2 sm:gap-0">
+          <DialogFooter className="gap-2 sm:gap-0 pt-2">
             <Button
               type="button"
               variant="outline"
               onClick={() => onOpenChange(false)}
               disabled={isLoading}
-              className="h-10"
             >
               Cancelar
             </Button>
-            <Button type="submit" disabled={isLoading} className="h-10">
+            <Button type="submit" disabled={isLoading}>
               {isLoading ? (
                 <>
                   <span className="size-4 animate-spin border-2 border-current border-t-transparent rounded-full mr-2" />

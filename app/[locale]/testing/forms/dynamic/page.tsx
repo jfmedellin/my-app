@@ -62,7 +62,7 @@ export default function DynamicFormsPage() {
           <span className="text-primary">&gt;</span> Elementos Complejos
         </h1>
         <p className="text-muted-foreground mt-1 font-mono text-sm">
-          {/* Datepickers, autocompletado, file uploads, sliders */}
+          Datepickers, autocompletado, file uploads, sliders
         </p>
       </div>
 
@@ -70,7 +70,7 @@ export default function DynamicFormsPage() {
       <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-900/50">
         <AlertTriangle className="size-4 text-amber-600 dark:text-amber-500" />
         <p className="text-xs font-mono text-amber-800 dark:text-amber-400">
-          {/* Entorno de pruebas - Demo Only */}
+          Entorno de pruebas - Demo Only
         </p>
       </div>
 
@@ -83,7 +83,7 @@ export default function DynamicFormsPage() {
               <CardTitle className="text-sm font-medium font-mono">selector_fecha_hora()</CardTitle>
             </div>
             <CardDescription className="font-mono text-xs">
-              {/* Selectores nativos para testing de calendarios */}
+              Selectores nativos para testing de calendarios
             </CardDescription>
           </CardHeader>
           <CardContent className="grid sm:grid-cols-2 gap-8">
@@ -93,7 +93,7 @@ export default function DynamicFormsPage() {
                   htmlFor="date-picker"
                   className="text-xs font-medium font-mono text-muted-foreground"
                 >
-                  {/* fecha (nativo) */}
+                  fecha (nativo)
                 </Label>
                 <div className="relative">
                   <Database className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/70 pointer-events-none" />
@@ -110,7 +110,7 @@ export default function DynamicFormsPage() {
                   htmlFor="time-picker"
                   className="text-xs font-medium font-mono text-muted-foreground"
                 >
-                  {/* hora (nativo) */}
+                  hora (nativo)
                 </Label>
                 <div className="relative">
                   <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/70 pointer-events-none" />
@@ -130,7 +130,7 @@ export default function DynamicFormsPage() {
                   htmlFor="datetime-picker"
                   className="text-xs font-medium font-mono text-muted-foreground"
                 >
-                  {/* fecha y hora locales */}
+                  fecha y hora locales
                 </Label>
                 <div className="relative">
                   <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/70 pointer-events-none" />
@@ -147,7 +147,7 @@ export default function DynamicFormsPage() {
                   htmlFor="month-picker"
                   className="text-xs font-medium font-mono text-muted-foreground"
                 >
-                  {/* mes (nativo) */}
+                  mes (nativo)
                 </Label>
                 <div className="relative">
                   <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/70 pointer-events-none" />
@@ -171,7 +171,7 @@ export default function DynamicFormsPage() {
               <CardTitle className="text-sm font-medium font-mono">autocompletado()</CardTitle>
             </div>
             <CardDescription className="font-mono text-xs">
-              {/* Input que sugiere opciones mientras escribes */}
+              Input que sugiere opciones mientras escribes
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -180,7 +180,7 @@ export default function DynamicFormsPage() {
                 htmlFor="browser-choice"
                 className="text-xs font-medium font-mono text-muted-foreground"
               >
-                {/* navegador favorito */}
+                navegador favorito
               </Label>
               <div className="relative">
                 <List className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/70 pointer-events-none" />
@@ -216,7 +216,7 @@ export default function DynamicFormsPage() {
               <CardTitle className="text-sm font-medium font-mono">archivo_upload()</CardTitle>
             </div>
             <CardDescription className="font-mono text-xs">
-              {/* Pruebas de file upload clásico y drag & drop */}
+              Pruebas de file upload clásico y drag & drop
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -225,7 +225,7 @@ export default function DynamicFormsPage() {
                 htmlFor="file-classic"
                 className="text-xs font-medium font-mono text-muted-foreground"
               >
-                {/* subida clásica (input file) */}
+                subida clásica (input file)
               </Label>
               <div className="relative">
                 <HardDrive className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/70 pointer-events-none" />
@@ -242,7 +242,7 @@ export default function DynamicFormsPage() {
 
             <div className="grid gap-3">
               <Label className="text-xs font-medium font-mono text-muted-foreground">
-                {/* zona drag & drop */}
+                zona drag & drop
               </Label>
               <div
                 className={`relative border-2 border-dashed rounded-lg p-10 flex flex-col items-center justify-center text-center transition-colors ${
@@ -277,7 +277,7 @@ export default function DynamicFormsPage() {
                     <UploadCloud className="w-10 h-10 text-muted-foreground mb-2" />
                     <p className="text-sm font-medium font-mono">arrastra_archivo_aqui</p>
                     <p className="text-xs text-muted-foreground font-mono mt-0.5">
-                      {/* cualquier extensión mock */}
+                      cualquier extensión mock
                     </p>
                   </>
                 )}
@@ -294,7 +294,7 @@ export default function DynamicFormsPage() {
               <CardTitle className="text-sm font-medium font-mono">selector_rango()</CardTitle>
             </div>
             <CardDescription className="font-mono text-xs">
-              {/* Input de tipo rango para selección continua */}
+              Input de tipo rango para selección continua
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -303,7 +303,7 @@ export default function DynamicFormsPage() {
                 htmlFor="volume-slider"
                 className="text-xs font-medium font-mono text-muted-foreground"
               >
-                {/* volumen (0 - 100) */}
+                volumen (0 - 100)
               </Label>
               <div className="flex items-center gap-4 py-2">
                 <input
@@ -339,7 +339,7 @@ export default function DynamicFormsPage() {
             <CardTitle className="text-sm font-medium font-mono">notas_testing()</CardTitle>
           </div>
           <CardDescription className="font-mono text-xs">
-            {/* Consideraciones para automatización de pruebas */}
+            Consideraciones para automatización de pruebas
           </CardDescription>
         </CardHeader>
         <CardContent>

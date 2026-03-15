@@ -65,7 +65,7 @@ export default function AsyncInteractionsPage() {
           <span className="text-primary">&gt;</span> Esperas Explícitas
         </h1>
         <p className="text-muted-foreground mt-1 font-mono text-sm">
-          {/* Elementos con delays y cambios de estado para testing */}
+          Elementos con delays y cambios de estado para testing
         </p>
       </div>
 
@@ -73,7 +73,7 @@ export default function AsyncInteractionsPage() {
       <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-900/50">
         <AlertTriangle className="size-4 text-amber-600 dark:text-amber-500" />
         <p className="text-xs font-mono text-amber-800 dark:text-amber-400">
-          {/* Entorno de pruebas - Demo Only */}
+          Entorno de pruebas - Demo Only
         </p>
       </div>
 
@@ -86,7 +86,7 @@ export default function AsyncInteractionsPage() {
               <CardTitle className="text-sm font-medium font-mono">carga_simulada()</CardTitle>
             </div>
             <CardDescription className="font-mono text-xs">
-              {/* El botón cambiará a estado de carga por 3 segundos */}
+              El botón cambiará a estado de carga por 3 segundos
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -134,7 +134,7 @@ export default function AsyncInteractionsPage() {
                 <CardTitle className="text-sm font-medium font-mono">aparicion_magica()</CardTitle>
               </div>
               <CardDescription className="font-mono text-xs">
-                {/* Un elemento se añadirá al DOM después de 5 segundos */}
+                Un elemento se añadirá al DOM después de 5 segundos
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -178,7 +178,7 @@ export default function AsyncInteractionsPage() {
                 </CardTitle>
               </div>
               <CardDescription className="font-mono text-xs">
-                {/* Un elemento será eliminado del DOM después de 5 segundos */}
+                Un elemento será eliminado del DOM después de 5 segundos
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -228,7 +228,7 @@ export default function AsyncInteractionsPage() {
             <CardTitle className="text-sm font-medium font-mono">notas_testing()</CardTitle>
           </div>
           <CardDescription className="font-mono text-xs">
-            {/* Consideraciones para automatización de pruebas */}
+            Consideraciones para automatización de pruebas
           </CardDescription>
         </CardHeader>
         <CardContent>

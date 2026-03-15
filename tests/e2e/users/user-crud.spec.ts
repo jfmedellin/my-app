@@ -10,6 +10,7 @@ test.describe('User Management - CRUD', () => {
   test.beforeEach(async ({ page }) => {
     usersPage = new UsersPage(page);
     await usersPage.goto();
+    await page.waitForTimeout(500);
   });
 
   test('USR01 - View user list', { tag: ['@smoke'] }, async () => {

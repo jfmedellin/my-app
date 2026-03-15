@@ -3,7 +3,6 @@
 import useSWR from 'swr';
 import { useState, useTransition } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { UsersModal } from '@/components/users/UsersModal';
 import { UserCard, UsersEmpty } from '@/components/users/UserCard';
 import { UsersHeader, UsersStats } from '@/components/users/UsersHeader';
@@ -71,25 +70,25 @@ export default function UsersPage() {
       <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-900/50">
         <AlertTriangle className="size-4 text-amber-600 dark:text-amber-500" />
         <p className="text-xs font-mono text-amber-800 dark:text-amber-400">
-          {/* Datos de prueba - Demo Data Only */}
+          Datos de prueba - Demo Data Only
         </p>
       </div>
 
       {users.length > 0 && <UsersStats users={users} />}
 
-      <Card className="border-dashed">
+      <Card>
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
-            <CardTitle className="text-sm font-medium font-mono flex items-center gap-2">
-              <Database className="size-4" />
-              Tabla: users
+            <CardTitle className="text-sm font-medium flex items-center gap-2">
+              <Database className="size-4 text-muted-foreground" />
+              Lista de usuarios
             </CardTitle>
-            <span className="text-xs font-mono text-muted-foreground">{users.length} rows</span>
+            <span className="text-xs text-muted-foreground">{users.length} total</span>
           </div>
         </CardHeader>
         <CardContent className="p-4 pt-0">
           {users.length === 0 ? (
-            <UsersEmpty />
+            <UsersEmpty onCreate={handleOpenCreate} />
           ) : (
             <div className="space-y-1.5">
               {users.map(user => (

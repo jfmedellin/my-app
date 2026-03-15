@@ -16,7 +16,6 @@ import {
 import {
   CalendarDays,
   CalendarRange,
-  CalendarClock,
   ChevronLeft,
   ChevronRight,
   Terminal,
@@ -317,13 +316,13 @@ export default function CalendarTestingPage({ params }: PageProps) {
               <CardTitle className="text-sm font-medium font-mono">obtener_semana()</CardTitle>
             </div>
             <CardDescription className="font-mono text-xs">
-              {/* Obtiene las fechas de una semana específica */}
+              Obtiene las fechas de una semana específica
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex gap-2">
               <div className="flex-1 space-y-1">
-                <span className="text-xs font-mono text-muted-foreground">{/* año */}</span>
+                <span className="text-xs font-mono text-muted-foreground">año</span>
                 <Select
                   value={new Date().getFullYear().toString()}
                   onValueChange={() => setWeekNumber(1)}
@@ -341,7 +340,7 @@ export default function CalendarTestingPage({ params }: PageProps) {
                 </Select>
               </div>
               <div className="flex-1 space-y-1">
-                <span className="text-xs font-mono text-muted-foreground">{/* semana */}</span>
+                <span className="text-xs font-mono text-muted-foreground">semana</span>
                 <Select
                   value={weekNumber.toString()}
                   onValueChange={(value: string) => setWeekNumber(parseInt(value))}
