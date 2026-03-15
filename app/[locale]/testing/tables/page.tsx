@@ -216,7 +216,7 @@ export default function TablesPage() {
               </thead>
               <tbody>
                 {paginatedData.length > 0 ? (
-                  paginatedData.map((row) => {
+                  paginatedData.map(row => {
                     const role = roleConfig[row.role as keyof typeof roleConfig] || roleConfig.user;
                     const status =
                       statusConfig[row.status as keyof typeof statusConfig] ||
