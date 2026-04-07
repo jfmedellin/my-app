@@ -19,6 +19,9 @@ opencode.json
 skills-lock.json
 skills/
 
+# openspec
+/openspec/
+
 # testing
 /coverage
 /playwright-report/

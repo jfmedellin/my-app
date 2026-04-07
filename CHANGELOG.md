@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **Playwright Screencast Recording**: Integrated Playwright 1.59+ screencast API for E2E tests
+  - Videos recorded in WebM format at `playwright-report/`
+  - Action visualization with `showActions({ position: 'top-right' })`
+  - Chapter markers with `showChapter()` for each step of the flow
+  - Videos automatically attached to HTML report via global fixture
+  - Fixture in `tests/e2e/fixtures/app.fixture.ts` handles attachment automatically
+  - Videos available in `test-results/<test>/attachments/screencast-video-*.webm`
+
+### Changed
+
+- **Playwright Upgrade**: Updated from 1.58.2 to 1.59.0
+  - Required for screencast API availability
+  - Updated browsers with `npx playwright install`
+
 ## [1.0.0] - 2026-03-01
 
 ### Added

@@ -1,6 +1,6 @@
 "use server"
 
-import { supabase } from "@/lib/supabase/client";
+import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 
 export interface User {
@@ -13,6 +13,7 @@ export interface User {
 }
 
 export async function getUsers(): Promise<User[]> {
+  const supabase = await createClient();
   const { data, error } = await supabase
     .from("users")
     .select("*")
@@ -27,6 +28,7 @@ export async function getUsers(): Promise<User[]> {
 }
 
 export async function createUser(userData: Omit<User, "id" | "created_at" | "updated_at">): Promise<User> {
+  const supabase = await createClient();
   const { data, error } = await supabase
     .from("users")
     .insert([userData])
@@ -43,6 +45,7 @@ export async function createUser(userData: Omit<User, "id" | "created_at" | "upd
 }
 
 export async function updateUser(id: number, userData: Partial<Omit<User, "id" | "created_at" | "updated_at">>): Promise<User> {
+  const supabase = await createClient();
   const { data, error } = await supabase
     .from("users")
     .update(userData)
@@ -60,6 +63,7 @@ export async function updateUser(id: number, userData: Partial<Omit<User, "id" |
 }
 
 export async function deleteUser(id: number): Promise<void> {
+  const supabase = await createClient();
   const { error } = await supabase
     .from("users")
     .delete()

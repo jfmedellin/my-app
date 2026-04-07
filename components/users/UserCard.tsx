@@ -92,7 +92,13 @@ export function UserCard({ name, email, role, onEdit, onDelete, isDeleting }: Us
 
       {/* Actions - siempre visibles */}
       <div className="flex items-center gap-1">
-        <Button variant="ghost" size="icon" onClick={onEdit} className="h-8 w-8">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={onEdit}
+          className="h-8 w-8"
+          data-testid="user-edit-btn"
+        >
           <Pencil className="size-4" />
         </Button>
         <Button
@@ -101,6 +107,7 @@ export function UserCard({ name, email, role, onEdit, onDelete, isDeleting }: Us
           onClick={onDelete}
           disabled={isDeleting}
           className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10"
+          data-testid="user-delete-btn"
         >
           {isDeleting ? (
             <span className="size-4 animate-spin border-2 border-destructive border-t-transparent rounded-full" />
