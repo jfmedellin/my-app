@@ -1,6 +1,9 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 
+const testUsername = process.env.AUTH_TEST_USERNAME || "qa_tester"
+const testPassword = process.env.AUTH_TEST_PASSWORD || "password123"
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     CredentialsProvider({
@@ -10,17 +13,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials) {
-        console.log("Credentials received:", credentials);
-        // Mock authentication - accepts admin@example.com with password 1234
-        if (credentials?.username === "admin@example.com" && credentials?.password === "1234") {
-          console.log("Validation passed");
+        // Validación para testing - usa variables de entorno
+        if (credentials?.username === testUsername && credentials?.password === testPassword) {
           return {
             id: "1",
-            name: "Admin User",
-            email: "admin@example.com"
+            name: "QA Tester",
+            email: credentials.username
           }
         }
-        console.log("Validation failed!");
+
+        // TODO: Implementar validación real con Supabase en producción
         return null
       }
     })
@@ -40,8 +42,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }
   },
   pages: {
-    signIn: "/en/auth", // Based on internationalized routing
+    signIn: "/en/auth",
   },
-  trustHost: true, // Needed sometimes in dev mode
-  debug: true,
+  trustHost: true,
+  debug: process.env.NODE_ENV === "development",
 })
