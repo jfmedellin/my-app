@@ -1,7 +1,7 @@
-"use server"
+'use server';
 
-import { createClient } from "@/lib/supabase/server";
-import { revalidatePath } from "next/cache";
+import { createClient } from '@/lib/supabase/server';
+import { revalidatePath } from 'next/cache';
 
 export interface User {
   id: number;
@@ -15,64 +15,62 @@ export interface User {
 export async function getUsers(): Promise<User[]> {
   const supabase = await createClient();
   const { data, error } = await supabase
-    .from("users")
-    .select("*")
-    .order("created_at", { ascending: false });
+    .from('users')
+    .select('*')
+    .order('created_at', { ascending: false });
 
   if (error) {
-    console.error("Error fetching users:", error);
-    throw new Error("Failed to fetch users");
+    console.error('Error fetching users:', error);
+    throw new Error('Failed to fetch users');
   }
 
   return data || [];
 }
 
-export async function createUser(userData: Omit<User, "id" | "created_at" | "updated_at">): Promise<User> {
+export async function createUser(
+  userData: Omit<User, 'id' | 'created_at' | 'updated_at'>
+): Promise<User> {
   const supabase = await createClient();
-  const { data, error } = await supabase
-    .from("users")
-    .insert([userData])
-    .select()
-    .single();
+  const { data, error } = await supabase.from('users').insert([userData]).select().single();
 
   if (error) {
-    console.error("Error creating user:", error);
-    throw new Error("Failed to create user");
+    console.error('Error creating user:', error);
+    throw new Error('Failed to create user');
   }
 
-  revalidatePath("/");
+  revalidatePath('/');
   return data;
 }
 
-export async function updateUser(id: number, userData: Partial<Omit<User, "id" | "created_at" | "updated_at">>): Promise<User> {
+export async function updateUser(
+  id: number,
+  userData: Partial<Omit<User, 'id' | 'created_at' | 'updated_at'>>
+): Promise<User> {
   const supabase = await createClient();
   const { data, error } = await supabase
-    .from("users")
+    .from('users')
     .update(userData)
-    .eq("id", id)
+    .eq('id', id)
     .select()
     .single();
 
   if (error) {
-    console.error("Error updating user:", error);
-    throw new Error("Failed to update user");
+    console.error('Error updating user:', error);
+    throw new Error('Failed to update user');
   }
 
-  revalidatePath("/");
+  revalidatePath('/');
   return data;
 }
 
 export async function deleteUser(id: number): Promise<void> {
   const supabase = await createClient();
-  const { error } = await supabase
-    .from("users")
-    .delete()
-    .eq("id", id);
+  const { error } = await supabase.from('users').delete().eq('id', id);
 
   if (error) {
-    console.error("Error deleting user:", error);
-    throw new Error("Failed to delete user");
+    console.error('Error deleting user:', error);
+    throw new Error('Failed to delete user');
   }
 
-  revalidatePath("/");
+  revalidatePath('/');
 }
